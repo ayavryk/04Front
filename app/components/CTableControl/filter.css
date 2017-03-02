@@ -1,0 +1,109 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    padding: 5px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    background: #eee;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    z-index:1;
+}
+
+.cell {
+    padding-right: 3px;
+}
+
+.full {
+    flex-grow: 1;
+}
+
+.full input {
+    width: 100% !important;
+}
+
+.btnWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.ctrlWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.selectedBtn {
+    margin-left:3px;
+}
+
+.divider {
+    border-left: solid  2px #ddd;
+    border-right: solid  2px #fff;
+    width:0px;
+    margin: 0 6px;
+}
+
+.group {
+    display:inline-block;
+}
+
+
+.selectedBtn:hover .menuContainer {
+     display:block;
+}
+
+.menuContainer {
+    position:relative;
+    left:-1em;
+    top: 0.5em;
+    display:none;
+}
+
+.menu { 
+    position:absolute;
+    top:0;
+    left:0;
+    background:#E6E6E6;
+    box-shadow: 2px 4px 8px 0px rgba(0,0,0,0.3);
+    margin-top:2px;
+    text-shadow: none !important;
+    border-radius :4px;
+    border: solid 1px #ccc;
+    padding: 10px 0;
+    text-align: left;
+}
+
+.menu div {
+    padding: 5px 15px;
+    border-top: solid 1px  #fff;
+    border-bottom: solid 1px  #ddd;
+} 
+
+.menu  :last-child {
+    border-bottom:none;
+}
+.menu  :first-child {
+    border-top:none;
+}
+
+.menu div:hover {
+    color: #fff;
+    margin: 0 -1px;
+    background: #337ab7;
+}    
+
+.disabled.selectedBtn .menuContainer {
+    display:none;
+}
+
+.groupDialog {
+    width:80%;
+    max-width: 1000px;
+    min-width: 600px;
+}
+
+.groupForm {
+    margin: -10px -10px 20px 0;
+}

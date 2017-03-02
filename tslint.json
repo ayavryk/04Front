@@ -1,0 +1,36 @@
+{
+  "extends": ["tslint:latest", "tslint-react"],
+  "rulesDirectory": "node_modules/tslint-eslint-rules/dist/rules",
+  "rules": {
+    "jsx-no-lambda": false,
+    "array-bracket-spacing": false,
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    "brace-style": [true, "1tbs", { "allowSingleLine": false }],
+    "comment-format": [true, "check-space", "check-uppercase"],
+    "jsx-no-multiline-js": false,
+    "jsx-wrap-multiline": false,
+    "member-ordering": [false],
+    "no-empty-interface": false,
+    "no-multi-spaces": true,
+    "no-unexpected-multiline": true,
+    "no-var-requires": false,
+    "object-curly-spacing": [true, "always"],
+    "object-literal-key-quotes": [true, "as-needed"],
+    "object-literal-sort-keys": false,
+    "ordered-imports": [false],
+    "quotemark": [true, "single", "jsx-double", "avoid-escape"],
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "ter-indent": [true, 4, { "SwitchCase": 1 }],
+    "trailing-comma": [false],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"],
+    "whitespace": [true,
+      "check-branch",
+      "check-decl",
+      "check-module",
+      "check-operator",
+      "check-separator",
+      "check-type",
+      "check-typecast"
+    ]
+  }
+}

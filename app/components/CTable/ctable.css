@@ -1,0 +1,79 @@
+.wrapper {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.table {
+    width: 100%;
+    font-size: 0.9em;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    font-family: Roboto, sans-serif;
+}
+.table th {
+    background: #eee;
+    padding: 10px 5px;
+    text-align: left;
+    font-weight: normal;
+    color: #555;
+}
+.table tr {
+    border-bottom: 1px solid #dfdfdf;
+}
+.table tbody :last-child {
+    border: none;
+}
+.table td {
+    padding: 5px 5px;
+
+
+}
+.table tbody tr:nth-child(2n) {
+    background: #f7f7f7;
+    /* Цвет фона */
+}
+.table tbody tr:hover {
+    background: #fcfcf4;
+}
+.link {
+    text-decoration: none;
+    color: #000;
+    display: block;
+    line-height: 1.2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.link:hover {
+    text-decoration: none;
+    color: #23527c;
+}
+.cell {
+    overflow: hidden;
+    height: 1.2em;
+    line-height: 1.2em;
+}
+
+.iconCell {
+    width:1em;
+} 
+
+.pointer {
+    cursor:pointer;
+}
+
+.public1 td:first-child {
+    border-left: rgb(28, 184, 65) 4px solid;
+}
+.public0 td:first-child {
+    background: yellow;
+}
+
+.public1 td:first-child {
+    border-left: rgb(28, 184, 65) 4px solid;
+}
+
+.publicHead th:first-child  {
+    border-left: #ccc 4px solid;
+}

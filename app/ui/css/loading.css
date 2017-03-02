@@ -1,0 +1,4 @@
+.loading {
+    height:400px;
+    background: url("./loading.gif") no-repeat 50% 50%;
+}

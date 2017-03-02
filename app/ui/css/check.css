@@ -1,0 +1,23 @@
+
+.check:focus {
+    outline: thin solid #129FEA;
+    outline: 1px auto #129FEA;
+}
+
+.check {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+.checkWrapper {
+    cursor:pointer;
+    display: flex;
+    flex-direction: row;
+}
+
+.text {
+    padding-left:4px;
+    color: #444;
+    font-size: 0.9em;
+    white-space: nowrap;
+}

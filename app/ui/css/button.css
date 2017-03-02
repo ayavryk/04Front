@@ -1,0 +1,59 @@
+.button {
+	/* Structure */
+	display: inline-block;
+	zoom: 1;
+	line-height: normal;
+	white-space: nowrap;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+.button {
+	font-family: inherit;
+	font-size: 100%;
+	padding: 0.5em 1em;
+	color: rgba(0, 0, 0, 0.80);
+	/* rgba supported */
+	border: none rgba(0, 0, 0, 0);
+	/*IE9 + everything else*/
+	background-color: #E6E6E6;
+	text-decoration: none;
+	border-radius: 2px;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.05) inset, 0 0 3px rgba(0,0,0,.1) inset;
+}
+.button_hover, .button:hover, .button:focus {
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+	background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.10));
+	background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.10));
+}
+.button:focus {
+	outline: 0;
+}
+.button_active, .button:active {
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 0 6px rgba(0, 0, 0, 0.20) inset;
+	border-color: #000;
+}
+.button[disabled], .button_disabled, .button_disabled:hover, .button_disabled:focus, .button_disabled:active {
+	border: none;
+	background-image: none;
+	/* csslint ignore:start */
+	filter: alpha(opacity=40);
+	/* csslint ignore:end */
+	opacity: 0.40;
+	cursor: not-allowed;
+	box-shadow: none;
+	pointer-events: none;
+}
+.button_primary {
+	background:var(--active-color);
+	/* this is a light blue */
+	color: #fff;
+}
+
+.button_secondary {
+	background:var(--secondary);
+	/* this is a light blue */
+	color: #fff;
+}
+

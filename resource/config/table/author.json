@@ -1,0 +1,52 @@
+{
+    "url" : {
+        "get":  "/v04",
+        "command": "/admin/command"
+    },
+    "group": [
+        {
+            "name":"Удалить", 
+            "code":"delete"
+        },
+        {
+            "name":"Удалить", 
+            "code":"boolean",
+            "field":"del",
+            "value":1            
+        },
+        {
+            "name":"Восстановить", 
+            "code":"boolean",
+            "field":"del",
+            "value":0      
+        }         
+    ],
+    
+    "config": [
+        {
+            "field":"id",
+            "elink":"http://yandex.ru/?{id}",
+            "header":"ID",
+            "title":"Посмотреть на сайте"            
+        },
+        {
+            "field":"name",
+            "header":"Название",
+            "link":"/edit/author/{id}",
+            "title":"Редактировать"
+        },
+        {
+            "field":"created",
+            "header":"Создан",
+            "width":"6em"
+        },{
+            "field":"public",
+            "type":"icon",
+            "headerIcon":"fa-eye",
+            "title":"Опубликовать/снять",
+            "command":"invert",
+            "commandUrl":"/admin/command",
+            "icons": [{"icon":"fa-eye"},{"icon":"fa-eye-slash"}]
+        }
+    ]
+}

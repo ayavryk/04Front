@@ -1,0 +1,39 @@
+.plus,.minus {
+    border-radius: 1.1em;
+    height:2.2em;
+    margin-left:2px;
+    width:2.2em;
+    padding:0;
+    line-height:1em;
+    overflow:hidden;
+    text-align:center;
+}
+.plus:hover {
+    background:#00B5AD;
+    color:#fff;
+}
+.minus:hover {
+    background:rgb(250, 210, 50);
+    color:#fff;
+}
+.wrapper {
+    display:inline-block;
+    padding:6px;
+    border-radius: 6px;
+    border-bottom: #fff solid 1px;
+    border-right: #fff solid 1px;
+    border-top: #ddd solid 1px;
+    border-left: #ddd solid 1px;
+    left:-6px;
+    position:relative;
+    margin-right:10px;
+}
+.line {
+	display: flex;
+	flex-direction: row;
+    position:relative;
+}
+.cell {
+	box-sizing: border-box;
+	padding-right: 2px;
+}
