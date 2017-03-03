@@ -11,12 +11,13 @@ import configLoader from '../ConfigLoader/configLoader';
 import {getRoute} from 'lib';
 import Loading from 'ui/loading';
 
-
 declare var appConfig: any;
 
+interface ITableConfig {
+  table?: any;
+}
+
 interface ITablePops {
-  dispatch: any;
-  history: any;
   filter: any;
   config: any;
   actions?: any;
@@ -28,38 +29,37 @@ interface ITablePops {
 
 class Table extends React.Component<ITablePops, any>  {
 
- 
 
   private hash = '';
-  private route = {hash: '', method: ''};
-  private query = {page: 0}; // запрос из Storage на момент входа. Нужен для перехода по страница, если фильтр изменен
+  private route = {hash:'',method:''};
+  private query = {page:0}; // запрос из Storage на момент входа. Нужен для перехода по страница, если фильтр изменен
 
-  public componentWillReceiveProps() {this.loadData(); }
-  public componentWillMount() {this.loadData(); }
+  public componentWillReceiveProps() {this.loadData();}
+  public componentWillMount() {this.loadData();}
 
   private sendRequestData() {
     const queryStirng = localStorage.getItem(this.hash) || '{}';
-    const query = Object.assign({query: queryStirng}, this.route);
-    this.props.actions.loadData(appConfig.server, query);
+    const query = Object.assign({query:queryStirng},this.route);
+    this.props.actions.loadData(appConfig.server,query);
   }
 
   private loadData() {
     this.route = getRoute();
-    if (this.hash === this.route.hash) {return; }
+    if (this.hash === this.route.hash) {return;}
     this.hash = this.route.hash;
     this.query =  JSON.parse(localStorage.getItem(this.hash) || '{}');
     this.sendRequestData();
   }
 
   public setFilter() {
-    this.query = Object.assign({}, this.props.data.filter, {page: 0});
-    localStorage.setItem(this.hash, JSON.stringify(this.query));
+    this.query = Object.assign({}, this.props.data.filter, {page:0});
+    localStorage.setItem(this.hash,JSON.stringify(this.query));
     this.sendRequestData();
   }
 
   public getPage(page) {
     this.query.page = page;
-    localStorage.setItem(this.hash, JSON.stringify(this.query));
+    localStorage.setItem(this.hash,JSON.stringify(this.query));
     this.sendRequestData();
   }
 
@@ -67,11 +67,6 @@ class Table extends React.Component<ITablePops, any>  {
     localStorage.removeItem(this.hash);
     this.sendRequestData();
   }
-
-  public createNewItem() {
-    location.href = '#/edit/' + this.props.params.type + '/0';
-  }
-
 
   public render()  {
       if (!this.props.data.data) {
@@ -81,12 +76,11 @@ class Table extends React.Component<ITablePops, any>  {
       return (
           <div className="editWrapper">
               <CTableControl
-                createNewItem = {() => this.createNewItem()}
                 actions = {this.props.actions}
                 config = {this.props.config}
                 data = {this.props.data.data}
                 filter={this.props.data.filter}
-                onChange = {e => this.props.actions.filter(e)}
+                onChange = {(e) => this.props.actions.filter(e)}
                 setFilter = {() => this.setFilter()}
                 clearFilter = {() => this.clearFilter()}
               />
@@ -95,7 +89,7 @@ class Table extends React.Component<ITablePops, any>  {
                 data = {this.props.data.data}
                 actions = {this.props.actions}
               />
-              <Pager onSkipTo = {e => this.getPage(e)} {...this.props.data.page}  />
+              <Pager onSkipTo = {(e) => this.getPage(e)} {...this.props.data.page}  />
           </div>
       );
   };
@@ -103,8 +97,8 @@ class Table extends React.Component<ITablePops, any>  {
 
 function mapStateToProps(state) {
   return {
-      data: state.table,
-      config: state.config,
+      data:state.table,
+      config:state.config,
   };
 }
 

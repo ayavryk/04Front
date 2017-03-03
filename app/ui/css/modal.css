@@ -57,24 +57,12 @@
     position:relative;
 }
 
- 
-
 .close {
-    float:right;
-    display:block;
+    position:absolute;
+    right:10px;
+    top:10px;
     cursor: pointer;
-    color:#fff;
-    margin-left:1em;
-    position:relative;
-    right:-15px;
-    text-shadow: 1px 1px 2px #555;
 }
-
-.close:hover {
-    text-shadow: none;
-
-}
-
 
 .warning {
 	background:var(--error);

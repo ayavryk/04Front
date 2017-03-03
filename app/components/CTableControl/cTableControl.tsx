@@ -25,9 +25,7 @@ export default class CTableControl extends React.Component < any, any > {
         return (
             <div>
                 <div className={css.wrapper} >
-                    <Button  onClick={() => this.props.createNewItem()} label="Добавить">
-                        <i className="fa fa-plus" />
-                    </Button>
+                    <Button label="Добавить"><i className="fa fa-plus" /></Button>
                     <GroupButton {...this.props} groupClick={item => this.groupClick(item)} />
                     <div className={css.divider} />
                     <FilterControls {...this.props} />

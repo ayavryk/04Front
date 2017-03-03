@@ -1,17 +1,17 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
-import { autoRehydrate } from 'redux-persist';
+
 import thunk from 'redux-thunk';
 
 const createLogger = require('redux-logger');
 import rootReducer from '../reducers';
 
-// From webpack
+// from webpack
 declare const __DEV__: boolean;
 
 export default function configureStore(history, initialState?: any) {
 
-  const middlewares: any[] = [
+  let middlewares: any[] = [
     routerMiddleware(history),
     thunk,
   ];
@@ -24,10 +24,11 @@ export default function configureStore(history, initialState?: any) {
 
   const environment: any = window || this;
 
-  const finalCreateStore = compose<any, any, any, any>(
+  const finalCreateStore = compose(
     applyMiddleware(...middlewares),
-    autoRehydrate(),
-    __DEV__ && typeof environment.devToolsExtension !== 'undefined' ? environment.devToolsExtension() : f => f,
+    __DEV__ &&
+    typeof environment.devToolsExtension !== 'undefined'
+      ? environment.devToolsExtension() : f => f
   )(createStore);
 
   const store = finalCreateStore(rootReducer, initialState);

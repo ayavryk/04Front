@@ -12,7 +12,7 @@ export default class Autocomplete extends React.Component < any, any > {
     public data = [];
     public type = 'Array';
 
-    constructor( props, context ) {
+    constructor ( props, context ) {
             super( props, context );
             this.sizer = null;
             this.input = null;
@@ -27,28 +27,28 @@ export default class Autocomplete extends React.Component < any, any > {
                  }
             }
             this.state = {
-                resultMaxStiring: 0,
+                resultMaxStiring:0,
                 results: [],
                 visible: false,
                 current: 2
             };
         }
 
-    private search( value ) {
-       return this.data.filter( item  =>  ( new RegExp(value, 'i') ).test( item ));
+    private search ( value ) {
+       return this.data.filter(( item ) =>  ( new RegExp(value, 'i') ).test( item ));
     }
 
     private getResult(deafultValue?) {
         const value = deafultValue || this.props.value;
         const results = this.search(value);
         let max = '';
-        this.data.map(item => {if (item.length > max.length) {max = item; }});
+        this.data.map((item) => {if (item.length > max.length) {max = item;}});
         this.setState({resultLargeStiring: max});
 
         this.setState({results});
         this.changeValue(value);
 
-        this.results.style.width = getComputedStyle(this.input, null).getPropertyValue('width');
+        this.results.style.width = getComputedStyle(this.input,null).getPropertyValue('width');
 
         this.setState({visible: results.length});
     }
@@ -67,43 +67,42 @@ export default class Autocomplete extends React.Component < any, any > {
         if (this.type === 'AJAX') {
             this.changeValue(value);
             if (value.length > 1) {
-                fGet(this.props.src + value, {success: this.ajaxDataUpdate.bind(this)});
+                fGet(this.props.src + value, {success:this.ajaxDataUpdate.bind(this)});
             }
         } else {
             this.getResult(value);
         }
     }
 
-    public itemClick(item, e) {
+    public itemClick(item) {
         this.setState({
-            visible: false}
+            visible:false}
         );
-        console.log(e);
         this.changeValue(this.state.results[item]);
     }
 
     public onKeyUp(e) {
 
-        const keyCode = e.keyCode || e.which;
+        let keyCode = e.keyCode || e.which;
         let current = this.state.current;
         if (!this.state.results.length) {
             return;
         }
 
         if (this.state.visible) {
-            this.setState({current: 0, visible: true});
+            this.setState({current:0,visible:true});
         }
 
         switch ( keyCode ) {
-            case 38: // Up
+            case 38: // up
                 current = current - 1;
                 break;
-            case 40: // Down
+            case 40: // down
                 current = current + 1;
                 break;
-                case 13: // Enter
+                case 13: // enter
                 if (current >= 0) {
-                    this.itemClick(current, 0);
+                    this.itemClick(current);
                     return;
                 };
                 break;
@@ -113,19 +112,19 @@ export default class Autocomplete extends React.Component < any, any > {
         current = current < 0 ? this.state.results.length - 1 : current;
         current = current > this.state.results.length - 1 ? 0 : current;
 
-        this.setState({current, visible: true});
+        this.setState({current,visible:true});
         console.log(current);
     }
 
-    public onBlur() {
+    public onBlur( e ) {
         // не отрабатывается клик по списку, если его спрятать сразу по blur :(  
         setTimeout(() => {
-           this.setState({visible: false});
-        }, 500);
+           this.setState({visible:false});
+        },500);
     }
 
     public changeValue(value) {
-        this.props.onChange({field: this.props.name, value});
+        this.props.onChange({field:this.props.name,value});
     }
 
 
@@ -134,16 +133,16 @@ export default class Autocomplete extends React.Component < any, any > {
         return this.state.results.map((item, key) => {
                 const className = css.autocomplete_item  + ' ' + (current === key ? css.autocomplete_select : '');
                 return (
-                    <div className={className} onClick={e => this.itemClick(key,e)} key={key}>{item}</div>
+                    <div className={className} onClick={(e) => this.itemClick(key)} key={key}>{item}</div>
                 );
             });
     }
 
     public render() {
 
-        const resultStyle = this.state.visible ? {display: 'block'} : {display: 'none'};
+        const resultStyle = this.state.visible ? {display:'block'} : {display:'none'};
         const items = this.itemList();
-        const style = this.props.width ? {width: this.props.width} : {};
+        const style = this.props.width ? {width:this.props.width} : {};
         return (
             <div className={css.autocomplete}>
                 <input
@@ -155,16 +154,16 @@ export default class Autocomplete extends React.Component < any, any > {
                     onChange={this.onChange.bind(this)}
                     onKeyUp={this.onKeyUp.bind(this)}
                     placeholder={this.props.placeholder}
-                    ref={input => { this.input = input; }}
+                    ref={(input) => { this.input = input; }}
                 />
-                <div className={css.autocomplete_size}  ref={e => { this.sizer = e; }}>
+                <div className={css.autocomplete_size}  ref={(e) => { this.sizer = e; }}>
                         {this.state.resultLargeStiring}
                 </div>
                 <div className={css.autocomplete_result} >
                     <div
                         style={resultStyle}
                         className={css.autocomplete_result_wrapper}
-                        ref={e => { this.results = e; }}
+                        ref={(e) => { this.results = e; }}
                     >
                         {items}
                     </div>

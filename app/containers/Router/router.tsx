@@ -7,7 +7,6 @@ import Table from '../Table/table';
 export default (
   <Route path="/" component={ App }>
     <IndexRoute component={ HomePage } />
-    <Route path="create/:type" component={ Edit } /> 
     <Route path="edit/:type/:id" component={ Edit } />
     <Route path="table/:type" component={ Table } />
   </Route>
