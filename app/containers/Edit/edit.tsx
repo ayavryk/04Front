@@ -14,11 +14,7 @@ const fcss  = require('components/CForm/cform.css');
 
 declare var appConfig: any;
 
-interface ITable {
-  actions?: any;
-  params?: any;
-  data?: any;
-}
+ 
 // ITablePops, ITableState
 interface IEditProps  {
     params: any;
@@ -35,14 +31,14 @@ class Edit extends React.Component<IEditProps, void> {
 
     private loadData() {
         const route = getRoute();
-        const params = Object.assign({},route);
-        if (this.hash === route.hash) {return;}
+        const params = Object.assign({}, route);
+        if (this.hash === route.hash) {return; }
         this.hash = route.hash;
-        this.props.actions.loadData(appConfig.server,params);
+        this.props.actions.loadData(appConfig.server, params);
     }
 
     public save() {
-        let route  = getRoute();
+        const route  = getRoute();
         route.controller = 'save';
         this.props.actions.save(
             appConfig.server,
@@ -78,8 +74,8 @@ class Edit extends React.Component<IEditProps, void> {
 
 function mapStateToProps(state) {
   return {
-      data:state.edit,
-      config:state.config,
+      data: state.edit,
+      config: state.config,
   };
 }
 
