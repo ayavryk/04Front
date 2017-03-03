@@ -1,9 +1,11 @@
 .form_buttons {
     text-align:right;
 }
-
+.form_buttons button {
+    margin-left:10px;
+}
 .buttons {
-    margin-right:10px;
+    mathin-left: 10px;
 }
 
 .cform {

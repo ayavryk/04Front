@@ -54,7 +54,10 @@ class Edit extends React.Component<IEditProps, void> {
         return  (
 
            <div className="editWrapper">
-                <CFormButtons />
+               <CFormButtons
+                    save = {() => this.save()}
+                    isChanged={this.props.data.isChanged}
+                />
                 <div className={css.grid + ' ' + fcss.cform}>
                     <CForm
                         actions = {this.props.actions}

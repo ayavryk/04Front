@@ -17,8 +17,8 @@ export default class FormButtons extends React.Component < any, any > {
             title: 'Подтверждение выхода',
             text: 'Вы внесли изменения в данные. Выйти без сохранения?',
             buttons: [
-                {name: 'Не сохранять', onClick: () => browserHistory.goBack()},
-                {name: 'Остаться'}
+                { name: 'Не сохранять', onClick: () => browserHistory.goBack(), type: 'cancel' },
+                { name: 'Остаться', type: 'ok' },
             ]
         });
     }
@@ -31,8 +31,8 @@ export default class FormButtons extends React.Component < any, any > {
             title: 'Подтверждение выхода',
             text: 'Сохранить изменения?',
             buttons: [
-                {name: 'Сохранить', onClick: () => this.props.save()},
-                {name: 'Остаться'}
+                {name: 'Сохранить', onClick: () => this.props.save(), type: 'ok' },
+                {name: 'Остаться', type: 'refresh' }
             ]
         });
     }
