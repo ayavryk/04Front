@@ -132,7 +132,7 @@ module.exports = {
       name: ['vendor', 'platforms', 'manifest'], // Specify the common bundle's name.
     }),
     new HtmlWebpackPlugin({
-      title: 'Interactive TV 2.0',
+      title: 'HPSY V4',
       template: path.resolve(ROOT_PATH, 'templates/index.ejs'),
     }),
     new webpack.DefinePlugin({

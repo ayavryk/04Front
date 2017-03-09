@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import CForm from 'components/CForm/cform';
 import CFormButtons from 'components/CForm/cformButtons';
-import { save, set as setData, clear, load as loadData, update } from 'reducers/rEdit';
+import { create, save, set as setData, clear, load as loadData, update } from 'reducers/rEdit';
 import { loadConfig, setConfig } from 'reducers/rConfig';
 import configLoader from '../ConfigLoader/configLoader';
 import Loading from 'ui/loading';
@@ -34,10 +34,14 @@ class Edit extends React.Component<IEditProps, void> {
         const params = Object.assign({}, route);
         if (this.hash === route.hash) {return; }
         this.hash = route.hash;
-        this.props.actions.loadData(appConfig.server, params);
+        if (route.id) {
+            this.props.actions.loadData(appConfig.server, params); 
+        } else {
+            this.props.actions.create();
+        }
     }
 
-    public save() {
+    public save = () => {
         const route  = getRoute();
         route.controller = 'save';
         this.props.actions.save(
@@ -51,10 +55,13 @@ class Edit extends React.Component<IEditProps, void> {
         if (!this.props.data || !this.props.data.data) {
             return <Loading />;
         }
-        return  (
-
+        const buttons = (<CFormButtons
+                    save = {this.save}
+                    isChanged={this.props.data.isChanged}
+        />);
+        return (
            <div className="editWrapper">
-                <CFormButtons />
+                {buttons}
                 <div className={css.grid + ' ' + fcss.cform}>
                     <CForm
                         actions = {this.props.actions}
@@ -62,12 +69,9 @@ class Edit extends React.Component<IEditProps, void> {
                         data = {this.props.data.data}
                     />
                 </div>
-                <CFormButtons
-                    save = {() => this.save()}
-                    isChanged={this.props.data.isChanged}
-                />
+                 {buttons}
             </div>
-           );
+        );
     };
 }
 
@@ -80,9 +84,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators({loadConfig, setConfig, save, clear, setData, loadData, update}, dispatch)
-  };
+    return {
+        actions: bindActionCreators({ create, loadConfig, setConfig, save, clear, setData, loadData, update }, dispatch)
+    };
 }
 
 export default (connect(mapStateToProps, mapDispatchToProps)(configLoader(Edit)));

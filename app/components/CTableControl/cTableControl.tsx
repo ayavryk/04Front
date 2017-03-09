@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { hashHistory } from 'react-router';
 import { Button } from 'ui';
 import CTableCommand from './cTableCommand';
 import FilterButtons from './filterButtons';
@@ -16,6 +17,9 @@ export default class CTableControl extends React.Component < any, any > {
         super(props);
     }
 
+    public createNewItem = () => {
+        hashHistory.push(`/edit/${this.props.route}'/0'`);
+    }
 
     public groupClick(item) {
         this.groupCommand.openDialog(item);
@@ -25,7 +29,7 @@ export default class CTableControl extends React.Component < any, any > {
         return (
             <div>
                 <div className={css.wrapper} >
-                    <Button label="Добавить"><i className="fa fa-plus" /></Button>
+                    <Button label="Добавить" onClick={this.createNewItem}><i className="fa fa-plus" /></Button>
                     <GroupButton {...this.props} groupClick={item => this.groupClick(item)} />
                     <div className={css.divider} />
                     <FilterControls {...this.props} />
@@ -36,7 +40,7 @@ export default class CTableControl extends React.Component < any, any > {
                 </div>
                 <CTableCommand
                     actions = {this.props.actions}
-                    ref={(e) => this.groupCommand = e}
+                    ref={e => this.groupCommand = e}
                     config = {this.props.config}
                     data = {this.props.data}
                 />

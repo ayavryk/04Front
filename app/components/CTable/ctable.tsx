@@ -64,8 +64,14 @@ export default class CTable extends React.Component < any, any > {
         const titleText = (field.title || '').replace('{id}', item.id);
         const title = titleText === '' ? {} : {title: titleText};
         let content;
+        let className = 'ERROR123';
         if (field.command) {
-            const className = 'fa ' + field.icons[field.icons.length === 1 ? 0 : item[field.field]].icon;
+            const index = field.icons.length === 1 ? 0 : item[field.field];
+            if (field.icons && field.icons[index] && field.icons[index].icon) {
+                className = 'fa ' + field.icons[index].icon;
+            }   else {
+                console.log('ERROR in config icons for ' + field.field + '=' + (item[field.field] || '??'));
+            }
             content = <i title={titleText}  className={className} />;
         }   else {
             content = (

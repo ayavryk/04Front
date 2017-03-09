@@ -1,6 +1,7 @@
 import * as React from 'react';
 const connect = require('react-redux').connect;
 import { bindActionCreators } from 'redux';
+
 import { loadData, setData, filter, check, checkAll } from 'reducers/rTable';
 import { loadConfig, setConfig } from 'reducers/rConfig';
 
@@ -15,6 +16,7 @@ declare var appConfig: any;
 
 
 interface ITablePops {
+    routeParams: any;
     filter: any;
     config: any;
     actions?: any;
@@ -73,13 +75,14 @@ class Table extends React.Component<ITablePops, any>  {
         return (
             <div className="editWrapper">
                 <CTableControl
-                  actions = {this.props.actions}
-                  config = {this.props.config}
-                  data = {this.props.data.data}
-                  filter={this.props.data.filter}
-                  onChange = {e => this.props.actions.filter(e)}
-                  setFilter = {() => this.setFilter()}
-                  clearFilter = {() => this.clearFilter()}
+                    route = {this.props.routeParams.type}
+                    actions = {this.props.actions}
+                    config = {this.props.config}
+                    data = {this.props.data.data}
+                    filter={this.props.data.filter}
+                    onChange = {e => this.props.actions.filter(e)}
+                    setFilter = {() => this.setFilter()}
+                    clearFilter = {() => this.clearFilter()}
                 />
                 <CTable
                   config = {this.props.config}
@@ -100,8 +103,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
+    const actions = { loadConfig, setConfig, loadData, setData, filter, check, checkAll };
     return {
-        actions: bindActionCreators({loadConfig, setConfig, loadData, setData, filter, check, checkAll}, dispatch)
+        actions: bindActionCreators( actions, dispatch)
     };
 }
 

@@ -9,40 +9,40 @@ export default class FormButtons extends React.Component < any, any > {
 
     private confirm;
 
-    private cancel() {
+    private cancel = () => {
         if (!this.props.isChanged) {
-           browserHistory.goBack();
+            browserHistory.goBack();
         }
         this.confirm.open({
             title: 'Подтверждение выхода',
             text: 'Вы внесли изменения в данные. Выйти без сохранения?',
-            buttons:[
-                {name:'Не сохранять',onClick:() => browserHistory.goBack()},
-                {name:'Остаться'}
+            buttons: [
+                { name: 'Не сохранять', onClick: () => browserHistory.goBack() },
+                { name: 'Остаться'}
             ]
-            });
+        });
     }
 
-    private save() {
+    private save = () => {
         if (!this.props.isChanged) {
             browserHistory.goBack();
         }
         this.confirm.open({
             title: 'Подтверждение выхода',
             text: 'Сохранить изменения?',
-            buttons:[
-                {name:'Сохранить',onClick:() => this.props.save()},
-                {name:'Остаться'}
+            buttons: [
+                { name: 'Сохранить', onClick: () => this.props.save() },
+                { name: 'Остаться' }
             ]
-            });
+        });
     }
 
     public render() {
         return (
             <div className = {css.form_buttons}>
-                <Button className={css.buttons} onClick = {() => this.cancel()}>Отменить</Button>
-                <Button className={css.buttons} onClick = {() => this.save()}>Сохранить</Button >
-                <Dialog ref={(e) => this.confirm = e} />
+                <Button className={css.buttons} onClick = {this.cancel}>Отменить</Button>
+                <Button className={css.buttons} onClick = {this.save}>Сохранить</Button >
+                <Dialog ref={e => this.confirm = e} />
             </div>
         );
     }

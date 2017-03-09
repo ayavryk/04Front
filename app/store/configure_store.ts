@@ -18,8 +18,8 @@ export default function configureStore(history, initialState?: any) {
 
     /** Add Only Dev. Middlewares */
     if (__DEV__) {
-      const logger = createLogger();
-      middlewares.push(logger);
+        const logger = createLogger();
+        middlewares.push(logger);
     }
 
     const environment: any = window || this;
@@ -33,10 +33,10 @@ export default function configureStore(history, initialState?: any) {
     const store = finalCreateStore(rootReducer, initialState);
 
     if (__DEV__ && (module as any).hot) {
-      (module as any).hot.accept('../reducers', () => {
-        const nextRootReducer = require('../reducers');
-        store.replaceReducer(nextRootReducer);
-      });
+        (module as any).hot.accept('../reducers', () => {
+            const nextRootReducer = require('../reducers');
+            store.replaceReducer(nextRootReducer);
+        });
     }
 
     return store;
