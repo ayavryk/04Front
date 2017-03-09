@@ -18,10 +18,8 @@ export default class AppNotify extends React.Component < any, any > {
 
     public render() {
         return (
-            <div className={css.notifyContainer}>
-                <div className={css.notify + ' ' + this.state.className}>
-                    {this.state.message}
-                </div>
+            <div className={css.notify + ' ' + this.state.className}>
+                {this.state.message}
             </div>
         );
     }

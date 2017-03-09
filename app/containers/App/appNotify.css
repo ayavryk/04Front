@@ -1,13 +1,11 @@
-.notifyContainer {
-    position:absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    z-index: 1000;
-    text-align: center;
-}
+
 
 .notify {
+    width:12em;
+    text-align:center;
+    left:50%;
+    margin-left:-6em;
+    position:fixed;
     box-sizing: border-box;
     height: 2em;
     line-height:2em;
@@ -19,7 +17,6 @@
     box-shadow: 0 0 5px rgba(0,0,0,0.5);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    position:relative;
     top:-2em;
     transition: top 0.5s;
 }
