@@ -1,5 +1,5 @@
 import  {fDGet} from '../lib/';
-import {MESSAGE} from './rMessage';
+
 declare var appConfig: any;
 
 // =============================================================================================  
@@ -7,6 +7,7 @@ declare var appConfig: any;
 // ============================================================================================= 
 export const CLOADERROR = 'CLOADERROR';
 export const CSET = 'CSET';
+export const MESSAGE = 'CMESSAGE';
 
 
 // =============================================================================================  
@@ -14,13 +15,13 @@ export const CSET = 'CSET';
 // ============================================================================================= 
 
 interface IData {
-  config: any;
-  url: any;
+    config: any;
+    url: any;
 }
 
 const INITIAL_STATE: IData = {
-  config: null,
-  url:null,
+    config: null,
+    url: null,
 };
 
 // =============================================================================================  
@@ -28,13 +29,13 @@ const INITIAL_STATE: IData = {
 // =============================================================================================  
 
 export function config(state: IData = INITIAL_STATE, action) {
-  switch (action.type) {
-    case CSET:
-      console.log(action.data);
-      return action.data ? action.data : INITIAL_STATE;
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case CSET:
+            console.log(action.data);
+            return action.data ? action.data : INITIAL_STATE;
+        default:
+            return state;
+    }
 }
 
 
@@ -43,23 +44,23 @@ export function config(state: IData = INITIAL_STATE, action) {
 // =============================================================================================  
 
 export function loadError() {
-  return (dispatch) => dispatch ({
-    type: MESSAGE,
-    data: {message:'Ошибка загрузки конфигурации'}
-  });
+    return dispatch => dispatch ({
+        type: MESSAGE,
+        data: { message: 'Ошибка загрузки конфигурации' }
+    });
 }
 export function setConfig(data) {
-  return (dispatch) => dispatch ({
-    type: CSET,
-    data
-  });
+    return dispatch => dispatch ({
+        type: CSET,
+        data
+    });
 }
 
 export function loadConfig(params) {
-  const url = appConfig.configPath.replace('{controller}',params.controller).replace('{method}',params.method);
-  return fDGet(url, {
-    params,
-    success: setConfig,
-    error: loadError
-  });
+    const url = appConfig.configPath.replace('{controller}', params.controller).replace('{method}', params.method);
+    return fDGet(url, {
+        params,
+        success: setConfig,
+        error: loadError
+    });
 }

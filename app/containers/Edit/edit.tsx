@@ -10,11 +10,10 @@ import configLoader from '../ConfigLoader/configLoader';
 import Loading from 'ui/loading';
 import {getRoute} from '../../lib';
 const css = require('ui/css/form.css');
-const fcss  = require('components/CForm/cform.css');
+const fcss = require('components/CForm/cform.css');
 
 declare var appConfig: any;
 
- 
 // ITablePops, ITableState
 interface IEditProps  {
     params: any;
@@ -26,16 +25,22 @@ interface IEditProps  {
 class Edit extends React.Component<IEditProps, void> {
 
     private hash = '';
-    public componentWillReceiveProps() { this.loadData(); }
-    public componentWillMount() { this.loadData(); }
+    public componentWillReceiveProps() {
+        this.loadData();
+    }
+    public componentWillMount() {
+        this.loadData();
+    }
 
     private loadData() {
         const route = getRoute();
         const params = Object.assign({}, route);
-        if (this.hash === route.hash) {return; }
+        if (this.hash === route.hash) {
+            return;
+        }
         this.hash = route.hash;
         if (route.id) {
-            this.props.actions.loadData(appConfig.server, params); 
+            this.props.actions.loadData(appConfig.server, params);
         } else {
             this.props.actions.create();
         }

@@ -1,7 +1,7 @@
 
-import {LOCATION_CHANGE} from 'react-router-redux';
-import {MESSAGE} from './rMessage';
-import {clone, fDGet} from 'lib';
+import { LOCATION_CHANGE } from 'react-router-redux';
+
+import { clone, fDGet } from 'lib';
 
 // =============================================================================================  
 // CONST 
@@ -13,6 +13,7 @@ export const SET = 'SET';
 export const CLEAR = 'EDIT_CLEAR';
 export const CREATE = 'EDIT_CREATE';
 export const SAVE = 'EDIT_SAVE';
+export const MESSAGE = 'EDIT_MESSAGE';
 
 // =============================================================================================  
 // INITIAL_STATE 
@@ -84,12 +85,6 @@ export function clear() {
 }
 
 function loadSucess(data) {
-    if (data.message || data.command) {
-        return dispatch => dispatch ({
-            type: MESSAGE,
-            data
-        });
-    }
     return dispatch => dispatch ({
         type: LOAD,
         data
@@ -99,7 +94,7 @@ function loadSucess(data) {
 export function loadError() {
     return dispatch => dispatch ({
         type: MESSAGE,
-        data: {message: 'Ошибка загрузки данных формы'}
+        data: { message: 'Ошибка загрузки данных формы' }
     });
 }
 

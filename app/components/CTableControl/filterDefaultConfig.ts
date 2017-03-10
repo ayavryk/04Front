@@ -4,7 +4,7 @@ export default[
         type : 'autocomplete',
         placeholder : 'строка поиска',
         name : 'query',
-        src : '/admin/suggest?method={method}&query=',
+        src : '{host}/V04?method={method}&controller=suggest&query=',
         width : '100%'
     }, {
         name : 'public',

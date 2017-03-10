@@ -1,23 +1,21 @@
 {
-    "url" : {
-        "get":  "/v04",
-        "command": "/admin/command"
-    },
+
     "group": [
         {
             "name":"Удалить", 
-            "code":"delete"
+            "code":"delete",
+            "confirm": "Вы уверены, что хотите удалить выделенные позиции? Подтвердите удаление"
         },
         {
-            "name":"Удалить", 
-            "code":"boolean",
-            "field":"del",
-            "value":1            
+            "name":"Опубликовать", 
+            "code":"set",
+            "field":"public",
+            "value":1      
         },
         {
-            "name":"Восстановить", 
-            "code":"boolean",
-            "field":"del",
+            "name":"Снять с публикации", 
+            "code":"set",
+            "field":"public",
             "value":0      
         }         
     ],

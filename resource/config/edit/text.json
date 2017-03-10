@@ -44,7 +44,7 @@
                   "field":"name",
                   "placeholder":"Тэг",
                   "title":"Тэг",
-                  "src":"{host}/V04?method=author&controller=suggest&query=",
+                  "src":"{host}/V04?method=tags&controller=suggest&query=",
                   "width":"10em"
                }
             ],

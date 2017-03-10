@@ -2,9 +2,9 @@ import * as React from 'react';
 import CTable from '../CTable/ctable';
 import CForm from '../CForm/cform';
 import Dialog from 'ui/dialog';
+import { getRoute } from 'lib';
 const css = require('./filter.css');
-
-
+declare var appConfig: any;
 
 export default class CTableCommand extends React.Component < any, any > {
 
@@ -20,10 +20,25 @@ export default class CTableCommand extends React.Component < any, any > {
     }
 
     public groupCommand() {
+        const route = getRoute();
         const ids = this.props.data.filter((e => !!e._selected)).map(item => item.id);
-        const url = this.props.config.url.command;
-        const data = Object.assign({}, this.state, ids);
-        this.props.actions.loadData(url, data);
+        let value = typeof(this.item.value) === 'undefined' ? '' : this.item.value;
+        if (this.item.code === 'set' && this.state.data[this.item.field])  {
+            value = this.state.data[this.item.field];
+        }
+        const data = {
+            field: this.item.field || '',
+            code: this.item.code,
+            data: this.state.data,
+            value,
+            ids
+        };
+        const params = {
+            controller: 'command',
+            method: route.method,
+            data: JSON.stringify(data)
+        };
+        this.props.actions.sendData(appConfig.server, params);
     }
 
     public confirm() {
@@ -55,8 +70,8 @@ export default class CTableCommand extends React.Component < any, any > {
         this.groupDialog.open({
             title: item.name + '?',
             buttons: [
-                {name: item.name, onClick : item.confirm ? this.confirm.bind(this) : this.groupCommand.bind(this) },
-                {name: 'Отменить?', type: 'secondary'}
+                { name: item.name, onClick : item.confirm ? this.confirm.bind(this) : this.groupCommand.bind(this) },
+                { name: 'Отменить?', type: 'secondary' }
             ]
         });
     }

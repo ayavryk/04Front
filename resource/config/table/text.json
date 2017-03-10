@@ -1,24 +1,25 @@
 {
-    "url" : {
-        "get": "/v04",
-        "command": "/admin/command"
-    },
     "group": [
         {
+            "name":"Удалить", 
+            "code":"delete",
+            "confirm": "Вы уверены, что хотите удалить выделенные позиции? Подтвердите удаление"
+        },
+        {
             "name":"Опубликовать", 
-            "code":"field",
+            "code":"set",
             "field":"public",
-            "value":1
+            "value":1      
         },
         {
             "name":"Снять с публикации", 
-            "code":"field",
+            "code":"set",
             "field":"public",
-            "value":0
-        },
+            "value":0      
+        },  
         {
             "name":"Изменить источник", 
-            "code":"field",
+            "code":"set",
             "field":"source",
             "form":[[{  
                 "flex":1,
@@ -28,14 +29,29 @@
             }]]
         },
         {
-            "name":"Изменить Автора", 
+            "name":"Изменить теги", 
             "code":"rel",
-            "field":"author"
-        },
-        {
-            "name":"Удалить", 
-            "code":"delete",
-            "confirm": "Вы уверены, что хотите удалить выделенные позиции? Подтвердите удаление"
+            "field":"tag",
+            "form":[
+                [{  
+                  "type":"autocomplete",
+                  "field":"add",
+                  "placeholder":"Тэг",
+                  "title":"Тэг",
+                  "src":"{host}/V04?method=tags&controller=suggest&query=",
+                  "label":"Добавить тег"
+               },{  
+                  "type":"autocomplete",
+                  "field":"del",
+                  "placeholder":"Тэг",
+                  "title":"Тэг",
+                  "src":"{host}/V04?method=tags&controller=suggest&query=",
+                  "label":"Удалить тег"
+               },{  
+                  "type":"check",
+                  "field":"all",
+                  "label":"Очистить старые"}]
+            ]            
         }                    
     ],
     "config": [

@@ -5,19 +5,19 @@ export default class Input extends React.Component < any, any > {
 
     private getCheckboxStatus() {
         const res = this.props.value && (
-            (parseInt(this.props.value,0) === 1)
+            (parseInt(this.props.value, 0) === 1)
             || this.props.value === 'true'
             || this.props.value === true
         );
         return res;
     }
 
-    private onClick(event) {
+    private onClick = () => {
 
         if (this.props.name) {
-            let value = this.getCheckboxStatus() ? 0 : 1;
-            this.props.onChange({field:this.props.name, value});
-        }   else {
+            const value = this.getCheckboxStatus() ? 0 : 1;
+            this.props.onChange({field: this.props.name, value});
+        } else {
             console.log('not found field name');
         }
     }
@@ -30,7 +30,7 @@ export default class Input extends React.Component < any, any > {
                         className={css.check}
                         checked = {this.getCheckboxStatus()}
                         type="checkbox"
-                        onChange={(e) => this.onClick(e)}
+                        onChange={this.onClick}
                 />
             </span>
             {this.props.label && <span className = {css.text}>{this.props.label}</span>}

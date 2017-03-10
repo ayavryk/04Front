@@ -9,7 +9,7 @@ function Loader(Component) {
 
 
         private isLoading = false;
-        private hash ='';
+        private hash = '';
 
         private loadConfig() {
             const route = getRoute();
@@ -24,8 +24,13 @@ function Loader(Component) {
             this.isLoading = true;
         }
 
-        public componentWillReceiveProps() { this.loadConfig(); }
-        public componentWillMount() { this.loadConfig(); }
+        public componentWillReceiveProps() {
+            this.loadConfig();
+        }
+
+        public componentWillMount() {
+            this.loadConfig();
+        }
 
         public render() {
             if  (!this.props.config.config || this.isLoading) {

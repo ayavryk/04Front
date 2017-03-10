@@ -1,9 +1,12 @@
 
+
 // =============================================================================================  
 // CONST 
 // ============================================================================================= 
-export const MESSAGE = 'MESSAGE';
-const SET = 'SET';
+
+ 
+const CLEAR = 'MSG_CLEAR';
+const SET = 'MSG_SET';
 
 // =============================================================================================  
 // INITIAL_STATE 
@@ -12,11 +15,13 @@ const SET = 'SET';
 interface IData {
     message: string;
     command: string;
+    notify: string;
 }
 
 const INITIAL_STATE: IData = {
     message: '',
-    command: ''
+    command: '',
+    notify: ''
 };
 
 // =============================================================================================  
@@ -25,18 +30,37 @@ const INITIAL_STATE: IData = {
 
 export function message(state: IData = INITIAL_STATE, action) {
     switch (action.type) {
-        case MESSAGE:
-            return Object.assign({}, state, action.data);
+        case CLEAR:
+            return INITIAL_STATE;
         case SET:
-            return Object.assign({}, state, action.data);
+            return { ...state, ...action.data };
         default:
-            return state;
+            let res = state;
+            if (action.data) {
+                const { command, notify, message } = action.data;
+                if (command) {
+                    res = { ...res, command };
+                }
+                if (notify) {
+                    res = { ...res, notify };
+                }
+                if (message) {
+                    res = { ...res, message };
+                }
+            }
+            return res;
     }
 }
 
 // =============================================================================================  
 // ACTIONS 
 // =============================================================================================  
+
+export function clearMessage() {
+    return dispatch => dispatch ({
+        type: CLEAR
+    });
+}
 
 export function setMessage(data) {
     return dispatch => dispatch ({

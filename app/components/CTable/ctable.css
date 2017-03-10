@@ -67,7 +67,7 @@
     border-left: rgb(28, 184, 65) 4px solid;
 }
 .public0 td:first-child {
-    background: yellow;
+    border-left: #FFCF82 4px solid;
 }
 
 .public1 td:first-child {

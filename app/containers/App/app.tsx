@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Menu from 'components/Menu/menu';
 import Dialog from 'ui/dialog';
-import { set as setData } from 'reducers/rEdit';
-import { setMessage } from 'reducers/rMessage';
+import { setMessage } from 'reducers/rCommand';
 import AppNotify from './appNotify';
-
+import { setData } from 'reducers/rTable';
 
 class App extends React.Component<any, void> {
 
@@ -25,19 +24,24 @@ class App extends React.Component<any, void> {
     }
 
     public componentWillReceiveProps(nextProps) {
-        if (!nextProps.message.message) {
-            return;
+        if (nextProps.message.message) {
+            this.showMessage(nextProps.message.message);
+            this.props.actions.setMessage({ message: '' });
         }
-        const message = nextProps.message.message;
-        switch (message) {
-            case 'save':
-                browserHistory.goBack();
-                this.notify.show('Сохранено');
-                break;
-            default:
-                this.showMessage(message);
+        if (nextProps.message.notify) {
+            this.notify.show(nextProps.message.notify);
+            this.props.actions.setMessage({ notify: '' });
         }
-        this.props.actions.setMessage({ message: '' });
+        if (nextProps.message.command) {
+            switch (nextProps.message.command) {
+                case 'save':
+                    hashHistory.goBack();
+                    this.notify.show('Сохранено');
+                    this.props.actions.setMessage({ command: '' });
+                    break;
+                default:
+            }
+        }
     }
 
     public render() {
@@ -52,7 +56,6 @@ class App extends React.Component<any, void> {
 }
 
 function mapStateToProps(state) {
-
     return {
         message: state.message,
         isChanged: !!state.edit.isChanged,
@@ -61,7 +64,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators({setData, setMessage}, dispatch)
+        actions: bindActionCreators({ setMessage, setData }, dispatch)
     };
 }
 
