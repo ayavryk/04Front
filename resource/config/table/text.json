@@ -31,7 +31,7 @@
         {
             "name":"Изменить теги", 
             "code":"rel",
-            "field":"tag",
+            "field":"tags",
             "form":[
                 [{  
                   "type":"autocomplete",
