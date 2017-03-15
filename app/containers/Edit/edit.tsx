@@ -8,7 +8,7 @@ import { create, save, set as setData, clear, load as loadData, update } from 'r
 import { loadConfig, setConfig } from 'reducers/rConfig';
 import configLoader from '../ConfigLoader/configLoader';
 import Loading from 'ui/loading';
-import {getRoute} from '../../lib';
+import { getRoute } from '../../lib';
 const css = require('ui/css/form.css');
 const fcss = require('components/CForm/cform.css');
 
@@ -47,7 +47,7 @@ class Edit extends React.Component<IEditProps, void> {
     }
 
     public save = () => {
-        const route  = getRoute();
+        const route = getRoute();
         route.controller = 'save';
         this.props.actions.save(
             appConfig.server,

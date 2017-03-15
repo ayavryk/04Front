@@ -5,37 +5,37 @@ const css = require('./css/ui.css');
 
 export default class Autocomplete extends React.Component < any, any > {
 
-    public sizer  = null;
-    public input  = null;
-    public results  = null;
+    public sizer = null;
+    public input = null;
+    public results = null;
 
     public data = [];
     public type = 'Array';
 
     constructor( props, context ) {
-            super( props, context );
-            this.sizer = null;
-            this.input = null;
-            // данные из массива или из строки ajax-запроса
-            if (!this.props.src) {
-                console.log('NOT FOUND SRC FOR AUTOSUGGEST');
-            }   else {
-                 if (Array.isArray(this.props.src.isArray)) {
-                    this.data = this.props.src;
-                 } else {
-                     this.type = 'AJAX';
-                 }
+        super( props, context );
+        this.sizer = null;
+        this.input = null;
+        // данные из массива или из строки ajax-запроса
+        if (!this.props.src) {
+            console.log('NOT FOUND SRC FOR AUTOSUGGEST');
+        }   else {
+            if (Array.isArray(this.props.src.isArray)) {
+                this.data = this.props.src;
+            } else {
+                this.type = 'AJAX';
             }
-            this.state = {
-                resultMaxStiring: 0,
-                results: [],
-                visible: false,
-                current: 2
-            };
         }
+        this.state = {
+            resultMaxStiring: 0,
+            results: [],
+            visible: false,
+            current: 2
+        };
+    }
 
     private search( value ) {
-       return this.data.filter( item  =>  ( new RegExp(value, 'i') ).test( item ));
+       return this.data.filter( item => ( new RegExp(value, 'i') ).test( item ));
     }
 
     private getResult(deafultValue?) {

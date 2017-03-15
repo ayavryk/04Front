@@ -12,7 +12,11 @@ export default class Text extends React.Component < any,any > {
     }
     public render() {
         return (
-            <textarea className={css.textarea} type="text" onChange={(e) => this.onChange(e)} value={this.props.value}/>
+            <textarea
+                className={css.textarea + ' ' + this.props.className}
+                type="text" onChange={(e) => this.onChange(e)}
+                value={this.props.value}
+            />
         );
     }
 }

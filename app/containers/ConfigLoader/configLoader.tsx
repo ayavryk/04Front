@@ -36,7 +36,7 @@ function Loader(Component) {
             if  (!this.props.config.config || this.isLoading) {
                 return <Loading />;
             }
-            return <Component  {...this.props}/>;
+            return <Component {...this.props}/>;
         }
     }
 

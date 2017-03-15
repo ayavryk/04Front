@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Button, AutoComplete, Input, Select, Text, Check} from './';
-import { shiftDown, ctrlDown} from '../lib/key';
+import { shiftDown, ctrlDown } from '../lib/key';
 
 const css = require('./css/mult.css');
 
@@ -91,7 +91,7 @@ export default class Mult extends React.Component < any, any > {
             // если данных нет забивается один элемент
             this.data = [[]];
             for (const field of this.props.config) {
-                this.data[0].push({field: field.field, value: ''});
+                this.data[0].push({ field: field.field, value: '' });
             }
         }
     }
@@ -105,7 +105,7 @@ export default class Mult extends React.Component < any, any > {
         const ins = [];
         console.log(shiftDown);
         for (const e of this.data[0]) {
-            ins.push({field: e.field, value: shiftDown ? e.value : ''});
+            ins.push({field: e.field, value: ''});
         }
         const pos = ctrlDown ? index + 1 : index;
         this.data.splice(pos, 0, ins);

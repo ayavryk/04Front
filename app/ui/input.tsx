@@ -17,6 +17,7 @@ export default class Input extends React.Component < any, any > {
                 className={css.input}
                 style={style}
                 type="text"
+                placeholder = {this.props.placeholder || this.props.title || this.props.label}
                 onChange={(e) => this.onChange(e)}
                 value={this.props.value}
             />);

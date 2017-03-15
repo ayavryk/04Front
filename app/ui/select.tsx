@@ -15,18 +15,18 @@ export default class Select extends React.Component < any, any > {
         const dataArray = this.props.src || [];
         const style = this.props.width ? {width:this.props.width} : {};
         const data = dataArray.map((item, index) => {
-                let value = '';
-                let text = '';
-                for (let i in item) {
-                    if (item.hasOwnProperty(i)) {
-                        value = i;
-                        text = item[i];
-                    }
+            let value = '';
+            let text = '';
+            for (let i in item) {
+                if (item.hasOwnProperty(i)) {
+                    value = i;
+                    text = item[i];
                 }
-                return (
-                    <option  key={index} value={value}>{text}</option>
-                );
-            });
+            }
+            return (
+                <option  key={index} value={value}>{text}</option>
+            );
+        });
         return (
             <select
                 style = {style}
@@ -34,7 +34,7 @@ export default class Select extends React.Component < any, any > {
                 defaultValue={this.props.value || ''}
                 onChange={(e) => this.onChange(e)}
             >
-                <option/>
+                <option value=' '/>
                 {data}
             </select>
         );
