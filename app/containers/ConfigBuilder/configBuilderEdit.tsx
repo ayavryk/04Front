@@ -24,7 +24,7 @@ export default class ConfigBuilderEdit extends React.Component<any, any> {
 
     public initialization() {
         this.setState(this.intialState);
-        this.parseFields();
+        
     }
 
     public parseFields() {
@@ -51,7 +51,8 @@ export default class ConfigBuilderEdit extends React.Component<any, any> {
 
     }
 
-    public generateForm(){
+    public generateForm() {
+       
         const fieldsType = {
             tinyint: 'check',
             longtext: 'rich',
@@ -122,7 +123,10 @@ export default class ConfigBuilderEdit extends React.Component<any, any> {
                     if (blockOn) {
                         block.push(value);
                     } else {
-                        res.push(value);
+                        if (!value.flex) {
+                            value.flex = 1;
+                        }
+                        res.push([value]);
                     }
             }
         }
@@ -151,7 +155,7 @@ export default class ConfigBuilderEdit extends React.Component<any, any> {
                 type: 'input',
                 field: 'flex',
                 label: 'flex',
-                width: '50px'
+                width: '50px',
             }
         ];
         return res;
@@ -163,19 +167,20 @@ export default class ConfigBuilderEdit extends React.Component<any, any> {
 
 
     public componentDidUpdate(){
-        console.log(this.output.scrollHeight);
         this.output.scrollTop = this.output.scrollHeight;
     }
 
     public render() {
+        this.parseFields();
+        const form = this.getConfigForm();
         return (
             <div>
-                <div className={css.h1}>{this.props.head} edit config</div>
+                <div className={css.h1}>Edit {this.props.head}</div>
                 <Mult
                     value={this.state.fields}
                     onChange={this.onChange}
                     name="form"
-                    config={this.getConfigForm()}
+                    config={form}
                     className = {css.mult}
                 />
                 <textarea

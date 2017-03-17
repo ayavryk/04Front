@@ -2,32 +2,23 @@ import * as React from 'react';
 
 import Mult from 'ui/mult';
 import Check from 'ui/check';
+import filterDefaultConfigExt from 'components/CTableControl/filterDefaultConfigExt';
+import configIconsTable from './configIconsTable';
+import configGroupTable from './configGroupTable';
 const css = require('./configBuilder.css');
 const uicss = require('ui/css/ui.css');
+
 
 export default class ConfigBuilderTable extends React.Component<any, any> {
 
     public fields = [];
     public output = null;
     public fieldsSelectConfig;
-    public commandConfig = [
-        [{
-            field: 'field',
-            type: 'select',
-            title: 'Операция',
-            src : [
-                {
-                    '': 'неопубликованные'
-                }, {
-                    '-1': 'удаленные'
-                }
-            ]
-        }]
-    ];
-
     public intialState = {
+        ext: { group: 0, icon: 0, filter: 0 },
         fields : [],
     };
+
 
     public componentWillReceiveProps() {
         this.initialization();
@@ -39,7 +30,6 @@ export default class ConfigBuilderTable extends React.Component<any, any> {
 
     public initialization() {
         this.setState(this.intialState);
-        this.parseFields();
     }
 
     public parseFields() {
@@ -64,9 +54,10 @@ export default class ConfigBuilderTable extends React.Component<any, any> {
 
     }
 
-
     public generateForm(){
+        this.parseFields();
         const data = this.state.fields;
+        
         let arr = data.map( item => {
             if (!item.field) {
                 return null;
@@ -83,12 +74,27 @@ export default class ConfigBuilderTable extends React.Component<any, any> {
                 res.header = item.header;
             }
             if (item.link) {
-                res.link = '/edit/' + field + '/{id}';
+                res.link = '/edit/' + this.props.head + '/{id}';
+
+            }
+            if (field === 'id') {
+                res.link = '/field/{id}';
+
             }
             return res;
         });
         arr = arr.filter(item => item);
-        return JSON.stringify({ config: arr }, null, '\t');
+        if (this.state.ext.icon) {
+            arr = arr.concat(configIconsTable);
+        }        
+        const result: any = { config: arr };
+        if (this.state.ext.group) {
+            result.group = configGroupTable;
+        }
+        if (this.state.ext.filter) {
+            result.filters = filterDefaultConfigExt;
+        }
+        return JSON.stringify(result, null, '\t');
     }
 
     public getConfigForm() {
@@ -108,10 +114,11 @@ export default class ConfigBuilderTable extends React.Component<any, any> {
             },
             {
                 type: 'check',
-                field: 'link',
-                label: 'link',
+                field: 'linkEdit',
+                label: 'linkEdit',
                 width: '100px'
-            },
+            }
+
         ];
         return res;
     }
@@ -120,15 +127,22 @@ export default class ConfigBuilderTable extends React.Component<any, any> {
         this.setState({ fields: value.value });
     };
 
-
     public componentDidUpdate() {
         this.output.scrollTop = this.output.scrollHeight;
     }
 
+    public extChange = data => {
+        const state = { ...this.state.ext };
+        state[data.field] = 1 - state[data.field];
+        this.setState({ ext: state });
+    }
+
     public render() {
+        
+        const form = this.generateForm()
         return (
             <div>
-                <div className={css.h1}>{this.props.head} table config</div>
+                <div className={css.h1}>Table {this.props.head} </div>
                 <fieldset className={css.fieldset}>
                     <legend>Поля</legend>
                     <Mult
@@ -141,13 +155,25 @@ export default class ConfigBuilderTable extends React.Component<any, any> {
                 </fieldset>
                 <fieldset className={css.fieldset}>
                     <legend>Дополнительно</legend>
-                    <Check name="group" label="Групповые операции" />
-                    <Check name="icons" label="Операции со строками" />
-                    <Check name="filters" label="Расширенные фильтры" />
+                    <Check
+                        name="group"
+                        onChange={this.extChange}
+                        label="Групповые операции"
+                    />
+                    <Check
+                        name="icon"
+                        onChange={this.extChange}
+                        label="Операции со строками"
+                    />
+                    <Check
+                        name="filter"
+                        onChange={this.extChange}
+                        label="Расширенные фильтры"
+                    />
                 </fieldset>
                 <textarea
                     className = {css.text + ' ' + uicss.textarea}
-                    value = {this.generateForm()}
+                    value = {form}
                     onChange={e => e}
                     ref={e => {this.output = e;}}
                 />

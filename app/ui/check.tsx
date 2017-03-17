@@ -16,7 +16,7 @@ export default class Input extends React.Component < any, any > {
 
         if (this.props.name) {
             const value = this.getCheckboxStatus() ? 0 : 1;
-            this.props.onChange({field: this.props.name, value});
+            this.props.onChange({ field: this.props.name, value });
         } else {
             console.log('not found field name');
         }

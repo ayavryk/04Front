@@ -91,7 +91,7 @@ export default class CTable extends React.Component < any, any > {
                 return;
             }
             const style = field.width ? {style: {width: field.width}} : {};
-            const onClick = function(){
+            const onClick = function (){
                 this.command(item, field);
             };
             const commands = (field.command) ? { className: css.pointer, onClick: onClick.bind(this) } : {};

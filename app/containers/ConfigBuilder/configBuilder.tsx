@@ -63,13 +63,13 @@ export default class ConfigBuilder extends React.Component<any, any> {
                 {this.state.current !== '' &&
                     <div className={css.forms}>
                         <div className={css.form}>
-                            <ConfigBuilderEdit
+                            <ConfigBuilderTable
                                 head = {this.state.current}
                                 data={this.state.config[this.state.current]} 
                             />
                         </div>
                         <div className={css.form}>
-                            <ConfigBuilderTable
+                            <ConfigBuilderEdit
                                 head = {this.state.current}
                                 data={this.state.config[this.state.current]} 
                             />

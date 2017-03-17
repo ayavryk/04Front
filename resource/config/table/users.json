@@ -1,0 +1,61 @@
+{
+	"config": [
+		{
+			"field": "id",
+			"header": "id",
+			"width": "3em",
+			"link": "/field/{id}"
+		},
+		{
+			"field": "fio",
+			"header": "fio",
+			"width": "6em",
+            "link":"/edit/users/{id}"
+		},
+		{
+			"field": "regmail",
+			"header": "regmail",
+            "link":"/edit/users/{id}"
+		},
+		{
+			"field": "edited",
+			"header": "edited"
+		},
+		{
+			"field": "created",
+			"header": "created"
+		},
+		{
+			"field": "public",
+			"type": "icon",
+			"headerIcon": "fa-eye",
+			"title": "Опубликовать/снять",
+			"command": "invert",
+			"commandUrl": "/admin/command",
+			"icons": [
+				{
+					"icon": "fa-eye"
+				},
+				{
+					"icon": "fa-eye-slash"
+				}
+			]
+		},
+		{
+			"field": "public",
+			"type": "icon",
+			"headerIcon": "fa-eye",
+			"title": "Опубликовать/снять",
+			"command": "invert",
+			"commandUrl": "/admin/command",
+			"icons": [
+				{
+					"icon": "fa-eye"
+				},
+				{
+					"icon": "fa-eye-slash"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,24 @@
+{
+	"config": [
+		{
+			"field": "id",
+			"header": "ID",
+            "width": "2em"
+		},
+		{
+			"field": "name",
+			"header": "Название",
+			"link": "/edit/tags/{id}"
+		},
+		{
+			"field": "created",
+			"header": "created",
+            "width": "6em"
+		},
+		{
+			"field": "edited",
+			"header": "edited",
+            "width": "6em"
+		}
+	]
+}
