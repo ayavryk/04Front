@@ -37,6 +37,8 @@
 	background: rgb(0, 120, 231);
 	color: #fff;
 }
+
+
 .autocomplete_item {
 	cursor: pointer;
 	padding: 0.2em 0.6em;

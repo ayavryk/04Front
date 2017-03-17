@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { fGet } from 'lib';
-import ConfigBuilderForm from './configBuilderForm';
+import ConfigBuilderEdit from './configBuilderEdit';
+import ConfigBuilderTable from './configBuilderTable';
 
 const css = require('./configBuilder.css');
 
@@ -61,10 +62,22 @@ export default class ConfigBuilder extends React.Component<any, any> {
                 </div>
                 {this.state.current !== '' &&
                     <div className={css.forms}>
-                        <ConfigBuilderForm data={this.state.config[this.state.current]} />
+                        <div className={css.form}>
+                            <ConfigBuilderEdit
+                                head = {this.state.current}
+                                data={this.state.config[this.state.current]} 
+                            />
+                        </div>
+                        <div className={css.form}>
+                            <ConfigBuilderTable
+                                head = {this.state.current}
+                                data={this.state.config[this.state.current]} 
+                            />
+                        </div>
                     </div>
                 }
             </div>
+
         );
     };
 }

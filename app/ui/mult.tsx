@@ -91,7 +91,7 @@ export default class Mult extends React.Component < any, any > {
             // если данных нет забивается один элемент
             this.data = [[]];
             for (const field of this.props.config) {
-                this.data[0].push({ field: field.field, value: '' });
+                this.data[0].push({ field: field.field, value: ''});
             }
         }
     }
@@ -105,9 +105,9 @@ export default class Mult extends React.Component < any, any > {
         const ins = [];
         console.log(shiftDown);
         for (const e of this.data[0]) {
-            ins.push({field: e.field, value: ''});
+            ins.push({ field: e.field, value: '' });
         }
-        const pos = ctrlDown ? index + 1 : index;
+        const pos = ctrlDown ? index : index + 1;
         this.data.splice(pos, 0, ins);
         this.onChangeData();
     }
@@ -117,9 +117,9 @@ export default class Mult extends React.Component < any, any > {
         const minBtn = key => this.data.length > 1 ?
             <Button className={css.minus} onClick = {() => this.delElement(key)}>—</Button> : '';
         const render = (item, key) => {
-            const style = {zIndex: (this.data.length - key)};
+            const style = { zIndex: (this.data.length - key) };
             return (
-                <div className={css.wrapper}  key={key}>
+                <div className={css.wrapper} key={key}>
                     <div style={style} className={css.line}>
                         {this.renderOneField(item,key)}
                         {minBtn(key)}
@@ -134,7 +134,7 @@ export default class Mult extends React.Component < any, any > {
     public render() {
         // {React.createElement(controls[type], this.props)}
         return (
-                <div>
+                <div className={this.props.className}>
                    {this.renderAll()}
                 </div>
         );

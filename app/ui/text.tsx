@@ -1,11 +1,11 @@
 import * as React from 'react';
 const css = require('./css/ui.css');
 
-export default class Text extends React.Component < any,any > {
+export default class Text extends React.Component < any, any > {
 
     private onChange(event) {
         if (this.props.name) {
-            this.props.onChange({field:this.props.name, value:event.target.value});
+            this.props.onChange({field: this.props.name, value: event.target.value});
         }   else {
             console.log('not found field name');
         }
@@ -14,7 +14,7 @@ export default class Text extends React.Component < any,any > {
         return (
             <textarea
                 className={css.textarea + ' ' + this.props.className}
-                type="text" onChange={(e) => this.onChange(e)}
+                type="text" onChange={e => this.onChange(e)}
                 value={this.props.value}
             />
         );

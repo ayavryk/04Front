@@ -10,7 +10,6 @@ export default class Autocomplete extends React.Component < any, any > {
     public results = null;
 
     public data = [];
-    public type = 'Array';
 
     constructor( props, context ) {
         super( props, context );
@@ -19,12 +18,6 @@ export default class Autocomplete extends React.Component < any, any > {
         // данные из массива или из строки ajax-запроса
         if (!this.props.src) {
             console.log('NOT FOUND SRC FOR AUTOSUGGEST');
-        }   else {
-            if (Array.isArray(this.props.src.isArray)) {
-                this.data = this.props.src;
-            } else {
-                this.type = 'AJAX';
-            }
         }
         this.state = {
             resultMaxStiring: 0,
@@ -35,7 +28,7 @@ export default class Autocomplete extends React.Component < any, any > {
     }
 
     private search( value ) {
-       return this.data.filter( item => ( new RegExp(value, 'i') ).test( item ));
+        return this.data.filter( item => ( new RegExp(value, 'i') ).test( item ));
     }
 
     private getResult(deafultValue?) {
@@ -49,7 +42,6 @@ export default class Autocomplete extends React.Component < any, any > {
         this.changeValue(value);
 
         this.results.style.width = getComputedStyle(this.input, null).getPropertyValue('width');
-
         this.setState({visible: results.length});
     }
 
@@ -61,16 +53,12 @@ export default class Autocomplete extends React.Component < any, any > {
     }
 
 
-    private onChange(e) {
+    private onChange = (e) => {
         const value = e.target.value;
         this.setState({visible: false});
-        if (this.type === 'AJAX') {
-            this.changeValue(value);
-            if (value.length > 1) {
-                fGet(this.props.src + value, {success: this.ajaxDataUpdate.bind(this)});
-            }
-        } else {
-            this.getResult(value);
+        this.changeValue(value);
+        if (value.length > 1) {
+            fGet(this.props.src + value, {success: this.ajaxDataUpdate.bind(this)});
         }
     }
 
@@ -81,7 +69,7 @@ export default class Autocomplete extends React.Component < any, any > {
         this.changeValue(this.state.results[item]);
     }
 
-    public onKeyUp(e) {
+    public onKeyUp = (e) => {
 
         const keyCode = e.keyCode || e.which;
         let current = this.state.current;
@@ -100,7 +88,7 @@ export default class Autocomplete extends React.Component < any, any > {
             case 40: // Down
                 current = current + 1;
                 break;
-                case 13: // Enter
+            case 13: // Enter
                 if (current >= 0) {
                     this.itemClick(current);
                     return;
@@ -116,10 +104,10 @@ export default class Autocomplete extends React.Component < any, any > {
         console.log(current);
     }
 
-    public onBlur() {
+    public onBlur = () => {
         // не отрабатывается клик по списку, если его спрятать сразу по blur :(  
         setTimeout(() => {
-           this.setState({visible: false});
+            this.setState({visible: false});
         }, 500);
     }
 
@@ -131,11 +119,11 @@ export default class Autocomplete extends React.Component < any, any > {
     public itemList() {
         const current = this.state.current;
         return this.state.results.map((item, key) => {
-                const className = css.autocomplete_item  + ' ' + (current === key ? css.autocomplete_select : '');
-                return (
-                    <div className={className} onClick={() => this.itemClick(key)} key={key}>{item}</div>
-                );
-            });
+            const className = css.autocomplete_item + ' ' + (current === key ? css.autocomplete_select : '');
+            return (
+                <div className={className} onClick={() => this.itemClick(key)} key={key}>{item}</div>
+            );
+        });
     }
 
     public render() {
@@ -150,20 +138,20 @@ export default class Autocomplete extends React.Component < any, any > {
                     style = {style}
                     type="text"
                     value={this.props.value}
-                    onBlur={this.onBlur.bind(this)}
-                    onChange={this.onChange.bind(this)}
-                    onKeyUp={this.onKeyUp.bind(this)}
+                    onBlur={this.onBlur}
+                    onChange={this.onChange}
+                    onKeyUp={this.onKeyUp}
                     placeholder={this.props.placeholder}
                     ref={input => { this.input = input; }}
                 />
-                <div className={css.autocomplete_size}  ref={e => { this.sizer = e; }}>
+                <div className={css.autocomplete_size} ref={e => { this.sizer = e; }}>
                         {this.state.resultLargeStiring}
                 </div>
                 <div className={css.autocomplete_result} >
                     <div
                         style={resultStyle}
                         className={css.autocomplete_result_wrapper}
-                        ref={e => { this.results = e; }}
+                        ref={e => { this.results = e;}}
                     >
                         {items}
                     </div>
