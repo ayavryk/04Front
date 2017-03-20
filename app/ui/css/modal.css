@@ -56,7 +56,9 @@
     color:#fff;
     position:relative;
 }
-
+.header .fa {
+    text-shadow: 1px 1px 3px #0ff;
+}
 .close {
     position:absolute;
     right:10px;

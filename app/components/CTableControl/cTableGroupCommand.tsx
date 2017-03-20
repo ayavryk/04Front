@@ -6,7 +6,7 @@ import { getRoute } from 'lib';
 const css = require('./filter.css');
 declare var appConfig: any;
 
-export default class CTableCommand extends React.Component < any, any > {
+export default class CTableGroupCommand extends React.Component < any, any > {
 
     private groupDialog = null;
     private confirmCommand = null;
@@ -23,7 +23,7 @@ export default class CTableCommand extends React.Component < any, any > {
         const route = getRoute();
         const ids = this.props.data.filter((e => !!e._selected)).map(item => item.id);
         let value = typeof(this.item.value) === 'undefined' ? '' : this.item.value;
-        if (this.item.code === 'set' && this.state.data[this.item.field])  {
+        if (this.item.code === 'set' && this.state.data[this.item.field]) {
             value = this.state.data[this.item.field];
         }
         const data = {
@@ -63,9 +63,9 @@ export default class CTableCommand extends React.Component < any, any > {
     public openDialog(item) {
         this.item = item;
         if (item.form) {
-            this.setState({form: item.form, isForm: true});
+            this.setState({ form: item.form, isForm: true });
         } else {
-            this.setState({form: item.form, isForm: false});
+            this.setState({ form: item.form, isForm: false });
         }
         this.groupDialog.open({
             title: item.name + '?',
@@ -77,7 +77,6 @@ export default class CTableCommand extends React.Component < any, any > {
     }
 
     public render() {
-
         const cFormProps = {
             className: css.groupForm,
             actions: {update: this.formAction.bind(this)},

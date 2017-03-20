@@ -29,7 +29,7 @@
 			"field": "public",
 			"type": "icon",
 			"headerIcon": "fa-eye",
-			"title": "Опубликовать/снять",
+			"title": "Удалить",
 			"command": "invert",
 			"commandUrl": "/admin/command",
 			"icons": [

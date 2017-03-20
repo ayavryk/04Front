@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { hashHistory } from 'react-router';
 import { Button } from 'ui';
-import CTableCommand from './cTableCommand';
+import CTableGroupCommand from './cTableGroupCommand';
 import FilterButtons from './filterButtons';
 import FilterControls from './filterControls';
 import GroupButton from './groupButton';
@@ -38,7 +38,7 @@ export default class CTableControl extends React.Component < any, any > {
                         setFilter = {() => this.props.setFilter()}
                     />
                 </div>
-                <CTableCommand
+                <CTableGroupCommand
                     actions = {this.props.actions}
                     ref={e => this.groupCommand = e}
                     config = {this.props.config}

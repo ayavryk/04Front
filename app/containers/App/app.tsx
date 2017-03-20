@@ -46,12 +46,13 @@ class App extends React.Component<any, void> {
 
     public render() {
         return (
-        <div>
-          <Menu isChanged = {this.props.isChanged} />
-          {this.props.children}
-          <Dialog ref={e => this.message = e} />
-          <AppNotify ref={e => this.notify = e} />
-        </div>);
+            <div>
+            <Menu isChanged = {this.props.isChanged} />
+                {this.props.children}
+                <Dialog ref={e => this.message = e} />
+                <AppNotify ref={e => this.notify = e} />
+            </div>
+        );
     };
 }
 

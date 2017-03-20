@@ -6,7 +6,7 @@ import { sendData, loadData, setData, filter, check, checkAll } from 'reducers/r
 import { loadConfig, setConfig } from 'reducers/rConfig';
 import { setMessage } from 'reducers/rCommand';
 
-import CTable from 'components/CTable/ctable';
+import CTableCommand from 'components/CTable/cTableCommand';
 import Pager from 'components/Pager/pager';
 import CTableControl from 'components/CTableControl/cTableControl';
 import configLoader from '../ConfigLoader/configLoader';
@@ -96,7 +96,7 @@ class Table extends React.Component<ITablePops, any>  {
                     setFilter = {() => this.setFilter()}
                     clearFilter = {() => this.clearFilter()}
                 />
-                <CTable
+                <CTableCommand
                   config = {this.props.config}
                   data = {this.props.data.data}
                   actions = {this.props.actions}

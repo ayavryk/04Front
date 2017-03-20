@@ -8,8 +8,8 @@ export default class GroupButton extends React.Component < any, any > {
         if (!config.group) {
             return <input type="hidden"/>;
         }
-        const  disabled = !this.props.data.some( elem => !!elem._selected);
-        let click= (item) => {
+        const disabled = !this.props.data.some( elem => !!elem._selected);
+        let click = item => {
             this.props.groupClick(item);
         };
         click = click.bind(this);
@@ -18,7 +18,7 @@ export default class GroupButton extends React.Component < any, any > {
                 {item.name}
             </div>);
         },this);
-        let className =  css.selectedBtn + (disabled ?  ' ' + css.disabled : '');
+        const className = css.selectedBtn + (disabled ? ' ' + css.disabled : '');
         return (
             <Button disabled={disabled} className={className} label="Операция с выделенными строками">
                 <i className="fa fa-list-ul" />
