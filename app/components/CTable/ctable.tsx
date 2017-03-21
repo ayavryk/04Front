@@ -42,10 +42,12 @@ export default class CTable extends React.Component < any, any > {
     }
 
     public renderHead() {
+        const styles = { id: '3em', created: '5em', edited: '5em'};
         const render = (item, index) => {
-            const head: any = item.icons ? <i className={'fa ' + item.icons[0]} /> : 
+            const head: any = item.icons ? <i className={'fa ' + item.icons[0]} /> :
                 item.header ? item.header : '??';
-            const style = item.width ? {width: item.width} : {};
+            const style = item.width ? { width: item.width } :
+                item.field && styles[item.field] ? { width: styles[item.field] } : {};
             return (<th key={index} style={style}>{head}</th>);
         };
         const body = this.getIems().map(render, this);
@@ -61,7 +63,7 @@ export default class CTable extends React.Component < any, any > {
     public renderCell(item, field) {
         const id = item.id;
         const titleText = (field.title || '').replace('{id}', item.id);
-        const title = titleText === '' ? {} : {title: titleText};
+        let title = titleText === '' ? {} : {title: titleText};
         let content;
         let className = 'ERROR123';
         if (field.command) {
@@ -73,9 +75,15 @@ export default class CTable extends React.Component < any, any > {
             }
             content = <i title={titleText} className={className} />;
         } else {
+            let view = item[field.field] ? item[field.field] : '---';
+            if (field.field === 'created' || field.field === 'edited') {
+                const date = view.substr(0, 10).split('-');
+                view = date[2] + '-' + date[1] + '-' + date[0].substr(2, 2);
+                title = { title: item[field.field] };
+            }
             content = (
             <span {... title}>
-                {item[field.field] ? item[field.field] : '&#160'}
+                {view}
             </span>
             );
         }
@@ -89,11 +97,11 @@ export default class CTable extends React.Component < any, any > {
                 console.log('ERR in table. not found ID for line ' + index);
                 return;
             }
-            const style = field.width ? {style: {width: field.width}} : {};
+            const style = field.width ? { style: { width: field.width }} : {};
             const commands = (!field.command) ? {} :
             {
-                className: css.pointer,
-                onClick: () => this.props.singleCommand(item, field) 
+                className: css.iconCell,
+                onClick: () => this.props.singleCommand(item, field)
             };
             return (
                 <td  {...style} key={key} {...commands}>
