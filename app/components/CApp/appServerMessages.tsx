@@ -9,7 +9,7 @@ export default class AppServerMessages extends React.Component < any, any > {
     private notify;
     private message;
 
-    public showMessage(message){
+    public showMessage(message) {
         this.message.open({
             title: ' ',
             text:  <div dangerouslySetInnerHTML ={{ __html: message }} / >,

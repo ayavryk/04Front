@@ -1,0 +1,25 @@
+.app {
+    display: flex;
+    flex-direction: row;
+    height:100%;
+}
+
+.leftMenuColumn {
+    background: #000;
+    color:#fff;
+    display:none;
+    height:100%;
+}
+
+.appColumn {
+    flex-grow:1;
+}
+
+.ext .leftMenuColumn {
+    display:block;
+}
+
+.ext .appColumn {
+    opacity:0.4
+}
+

@@ -1,0 +1,22 @@
+.item,.head {
+    padding:0.5em 0; 
+    color:#eee;
+    display:block;
+}
+.item:hover {
+   background: #00B5AD;
+   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.head {
+    background:#333;
+}
+
+.item i, .head i {
+    font-style: normal;
+    display:block;
+    margin: 0 20px;
+    width:200px;
+    overflow:hidden;
+    line-height: 1.4em;
+    height: 1.4em;
+}

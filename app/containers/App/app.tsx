@@ -2,20 +2,19 @@ import * as React from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Menu from 'components/Menu/menu';
+
 import { setMessage } from 'reducers/rCommand';
 import { setData } from 'reducers/rTable';
-import AppServerMessages from './appServerMessages';
+import AppServerMessages from 'components/CApp/appServerMessages';
+import AppWrapper from 'components/CApp/appWrapper';
 
 class App extends React.Component<any, void> {
-
     public render() {
         return (
-            <div>
-                <Menu isChanged = {this.props.isChanged} />
+            <AppWrapper isChanged = {this.props.isChanged}>
                 <AppServerMessages actions={this.props.actions} message={this.props.message} />
                 {this.props.children}
-            </div>
+            </AppWrapper>
         );
     };
 }
