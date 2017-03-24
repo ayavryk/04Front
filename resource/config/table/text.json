@@ -38,14 +38,14 @@
                   "field":"add",
                   "placeholder":"Тэг",
                   "title":"Тэг",
-                  "src":"{host}/V04?method=tags&controller=suggest&query=",
+                  "src":"{server}?method=tags&controller=suggest&query=",
                   "label":"Добавить тег"
                },{  
                   "type":"autocomplete",
                   "field":"del",
                   "placeholder":"Тэг",
                   "title":"Тэг",
-                  "src":"{host}/V04?method=tags&controller=suggest&query=",
+                  "src":"{server}?method=tags&controller=suggest&query=",
                   "label":"Удалить тег"
                },{  
                   "type":"check",

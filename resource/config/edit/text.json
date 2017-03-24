@@ -27,7 +27,7 @@
                   "field":"name",
                   "placeholder":"Автор",
                   "title":"Автор",
-                  "src":"{host}/V04?method=author&controller=suggest&query=",
+                  "src":"{server}?method=author&controller=suggest&query=",
                   "width":"10em"
                }
             ],
@@ -44,7 +44,7 @@
                   "field":"name",
                   "placeholder":"Тэг",
                   "title":"Тэг",
-                  "src":"{host}/V04?method=tags&controller=suggest&query=",
+                  "src":"{server}?method=tags&controller=suggest&query=",
                   "width":"10em"
                }
             ],

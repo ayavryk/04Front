@@ -1,7 +1,7 @@
 {
             "host":"http://c04.new",
             "configPath": "/config/{controller}/{method}.json",
-            "server" : "http://c04.new/v04", 
+            "server" : "http://c04.new/admin04/main", 
             "menu": [
                 {
                     "head":"Основное"
@@ -30,8 +30,6 @@
                 },  {
                     "head":"Справочники"
                 },    
-
-
                 {
                     "title": "Страны",
                     "route": "table/users"
