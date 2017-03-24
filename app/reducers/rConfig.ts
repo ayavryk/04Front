@@ -1,6 +1,6 @@
 import  {fDGet} from '../lib/';
 
-declare var appConfig: any;
+import { config as appConfig } from 'lib/appConfig';
 
 // =============================================================================================  
 // CONST 
@@ -31,7 +31,6 @@ const INITIAL_STATE: IData = {
 export function config(state: IData = INITIAL_STATE, action) {
     switch (action.type) {
         case CSET:
-            console.log(action.data);
             return action.data ? action.data : INITIAL_STATE;
         default:
             return state;

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { hashHistory, Link } from 'react-router';
 import Dialog from 'ui/dialog';
+import { config as appConfig } from 'lib/appConfig';
 
 const css = require('./mainMenu.css');
-
-declare var appConfig: any;
 
 export default class MainMenu extends React.Component<any, any> {
 
@@ -34,13 +33,13 @@ export default class MainMenu extends React.Component<any, any> {
         if (this.props.additionPoint) {
             mainMenuPoints.push(this.props.additionPoint);
         }
-        const res = mainMenuPoints.map(item => {
+        const res = mainMenuPoints.map((item, index) => {
             const active = (item.route !== '' && location.hash.indexOf(item.route) >= 0) ? css.active : '';
             const className = active + ' ' + css.item + ' ';
             return (
               <Link
                 onClick = {e => this.jump(e,item)}
-                key={item.title}
+                key={index}
                 className={className}
                 to={item.route}
               >{item.title}
@@ -50,10 +49,11 @@ export default class MainMenu extends React.Component<any, any> {
     }
 
     public render() {
+        const lightColor = this.props.lightColor ? css.lightColor : '';
         return (
             <div>
-              <div className={css.menu}>
-                <div className="editWrapper" >
+              <div className={css.menu + ' ' + lightColor}>
+                <div className="editWrapper">
                         <span className={css.item} onClick={this.props.extMemuShow}>
                           <i className={'fa fa-bars ' + css.extIcons} aria-hidden="true"/>
                         </span>

@@ -2,33 +2,35 @@ import * as React from 'react';
 import { Link } from 'react-router';
 const css = require('./menu.css');
 
-declare var appConfig: any;
+import { config as appConfig } from 'lib/appConfig';
 
-export default class MainMenu extends React.Component<any, any> {
+export default class Menu extends React.Component<any, any> {
 
     public confirm = null;
 
     private choicePoint(item) {
-        this.props.choicePoint(item);
+        if (!item.main) {
+            this.props.choicePoint(item);
+        }  else {
+            this.props.choicePoint(null);
+        }
     }
 
     private menuItems() {
-        const res = appConfig.menu.map(item => {
+        const res = appConfig.menu.map((item, index) => {
             if (item.head) {
-                return <div className={css.head}><i>{item.head}</i></div>;
-            }
-            if (item.url) {
-                return <a className={css.item} href={item.url} target="_blank"><i>{item.title}</i></a>;
+                return <div key={index} className={css.head}><i>{item.head}</i></div>;
             }
             if (item.route) {
                 return (
-                    <Link className={css.item} to={item.route}>
+                    <Link key = {index} className={css.item} to={item.route}>
                         <i onClick={() => this.choicePoint(item)}>
                             {item.title}
                          </i>
                     </Link>
                 );
-            }
+            }  
+            return (<div>no head, no route :(</div>);
         }, this);
         return res;
     }

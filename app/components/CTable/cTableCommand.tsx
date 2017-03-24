@@ -2,7 +2,7 @@ import * as React from 'react';
 import CTable from '../CTable/ctable';
 import Dialog from 'ui/dialog';
 import { getRoute } from 'lib';
-declare var appConfig: any;
+import { config as appConfig } from 'lib/appConfig';
 
 export default class CTableCommand extends React.Component < any, any > {
 

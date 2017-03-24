@@ -18,11 +18,12 @@ export default class AppWrapper extends React.Component < any, any > {
         }
     };
 
-    public choicePoint(item) {
+    public choicePoint(additionPoint) {
         this.setState({
-            ext: false,
-            additionPoint: item
+            additionPoint,
+            ext: false
         });
+
     }
 
     public render()  {
@@ -34,6 +35,7 @@ export default class AppWrapper extends React.Component < any, any > {
                 </div>
                 <div onClick={this.extMenuHide} className={css.appColumn}>
                     <MainMenu
+                        lightColor={this.state.ext}
                         extMemuShow={this.extMenuShow}
                         additionPoint={this.state.additionPoint}
                         isChanged = {this.props.isChanged}

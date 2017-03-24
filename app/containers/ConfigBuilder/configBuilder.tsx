@@ -5,7 +5,8 @@ import ConfigBuilderTable from './configBuilderTable';
 
 const css = require('./configBuilder.css');
 
-declare var appConfig: any;
+
+import { config as appConfig } from 'lib/appConfig';
 
 export default class ConfigBuilder extends React.Component<any, any> {
 

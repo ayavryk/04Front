@@ -12,7 +12,7 @@ import { getRoute } from '../../lib';
 const css = require('ui/css/form.css');
 const fcss = require('components/CForm/cform.css');
 
-declare var appConfig: any;
+import { config as appConfig } from 'lib/appConfig';
 
 // ITablePops, ITableState
 interface IEditProps  {

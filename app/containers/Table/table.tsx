@@ -13,7 +13,7 @@ import configLoader from '../ConfigLoader/configLoader';
 import { getRoute } from 'lib';
 import Loading from 'ui/loading';
 
-declare var appConfig: any;
+import { config as appConfig } from 'lib/appConfig';
 
 
 interface ITablePops {

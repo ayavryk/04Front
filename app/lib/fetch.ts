@@ -1,5 +1,5 @@
 require('isomorphic-fetch');
-declare var appConfig: any;
+import { config as appConfig } from 'lib/appConfig';
 
 export function fGet(url: string, params?: any) {
     fetch(url.replace('{host}', appConfig.host))

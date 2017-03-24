@@ -1,14 +1,17 @@
 .item,.head {
     padding:0.5em 0; 
-    color:#eee;
+    color:#ccc;
     display:block;
+    text-decoration: none;
 }
+
 .item:hover {
    background: #00B5AD;
    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 .head {
-    background:#333;
+    color:#fff;
+    background:#222;
 }
 
 .item i, .head i {

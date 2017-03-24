@@ -4,7 +4,7 @@ import CForm from '../CForm/cform';
 import Dialog from 'ui/dialog';
 import { getRoute } from 'lib';
 const css = require('./filter.css');
-declare var appConfig: any;
+import { config as appConfig } from 'lib/appConfig';
 
 export default class CTableGroupCommand extends React.Component < any, any > {
 

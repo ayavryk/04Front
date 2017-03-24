@@ -5,78 +5,8 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
     <link rel="stylesheet" href="/css/font-awesome.css">
     <script>
-        appConfig = {
-            "host":"http://c04.new",
-            "configPath": "/config/{controller}/{method}.json",
-            "server" : "http://c04.new/v04", 
-            "menu": [
-                {
-                    "head":"Основное"
-                },
-                {   "main": true, 
-                    "title": "Авторы",
-                    "route": "table/author",
-                    "default":true
-                },
-                {   "main": true,
-                    "title": "Цитаты",
-                    "route": "table/text"
-                },    
-                {   "main": true,
-                    "title": "Теги",
-                    "route": "table/tags"
-                },{
-                    "head":"Административное"
-                },    
-                {
-                    "title": "Пользователи",
-                    "route": "table/users"
-                },                   
-                {
-                    "title": "ConfigBuilder",
-                    "route": "configBuilder"
-                }, {
-                    "title": "Сброс кэша",
-                    "url":"http://cpsy.ru/~clear"
-                }, {
-                    "head":"Справочники"
-                },    
-                {
-                    "title": "Организации",
-                    "route": "table/users"
-                }, 
-                {
-                    "title": "Страны",
-                    "route": "table/users"
-                }, 
-                {
-                    "title": "Города",
-                    "route": "table/users"
-                }, 
-                {
-                    "title": "Организации",
-                    "route": "table/users"
-                }, {
-                    "head":"Новости, реклама"
-                },    
-                {
-                    "title": "Рассылки",
-                    "route": "table/users"
-                }, 
-                {
-                    "title": "Новости",
-                    "route": "table/users"
-                }, 
-                {
-                    "title": "Города",
-                    "route": "table/users"
-                }, 
-                {
-                    "title": "Организации",
-                    "route": "table/users"
-                }
-            ]
-        }
+        configPath = '/config/main.json';
+        appConfig = {};
     </script>
 <body>
     <div id="root"></div>
