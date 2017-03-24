@@ -2,7 +2,8 @@ require('isomorphic-fetch');
 import { config as appConfig } from 'lib/appConfig';
 
 export function fGet(url: string, params?: any) {
-    fetch(url.replace('{host}', appConfig.host))
+
+    fetch(url.replace('{server}', appConfig.server))
       .then(res => {
           return res.json()
             .then( res => {

@@ -4,16 +4,16 @@ export default[
         type : 'autocomplete',
         placeholder : 'строка поиска',
         name : 'query',
-        src : '{host}/V04?method={method}&controller=suggest&query=',
+        src : '{server}?method={method}&controller=suggest&query=',
         width : '100%'
     }, {
         name : 'public',
         type : 'select',
         src : [
             {
-                '0': 'неопубликованные'
+                0: 'неопубликованные'
             }, {
-                '1': 'опубликованные'
+                1: 'опубликованные'
             }
         ]
     }

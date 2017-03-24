@@ -93,7 +93,7 @@ export default class ConfigBuilderEdit extends React.Component<any, any> {
                         field: 'name',
                         placeholder: name,
                         title:  name,
-                        src: '{host}/V04?method=' + table[1] + '&controller=suggest&query=',
+                        src: '{server}?method=' + table[1] + '&controller=suggest&query=',
                     }],
                     label: name
                 };
