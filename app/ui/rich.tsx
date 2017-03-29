@@ -1,5 +1,5 @@
 import * as React from 'react';
-const editorPath = '/tiny/index.html';
+import { config as appConfig } from 'lib/appConfig';
 
 export default class Rich extends React.Component<any, any> {
 
@@ -62,7 +62,7 @@ export default class Rich extends React.Component<any, any> {
         if (this.iframe.addEventListener) {
             this.iframe.addEventListener('load', this.loadDataToEditor, false);
         }
-        this.iframe.src = editorPath;
+        this.iframe.src = appConfig.editorPath;
     };
 
     public componentWillUnmount() {

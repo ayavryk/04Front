@@ -2,6 +2,7 @@
             "host":"http://c04.new",
             "configPath": "/config/{controller}/{method}.json",
             "server" : "http://c04.new/admin04/main", 
+            "editorPath": "/tiny/index.html",
             "menu": [
                 {
                     "head":"Основное"
