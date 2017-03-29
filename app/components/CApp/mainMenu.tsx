@@ -21,8 +21,8 @@ export default class MainMenu extends React.Component<any, any> {
             title: 'Подтверждение выхода',
             text: 'Вы внесли изменения в данные. Выйти без сохранения?',
             buttons: [
-              { name: 'Не сохранять', onClick: gogo },
-              { name: 'Остаться' }
+              { icon: 'cancel', name: 'Не сохранять', onClick: gogo },
+              { icon: 'default', name: 'Остаться' }
             ]
         });
         e.preventDefault();

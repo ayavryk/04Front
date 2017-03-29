@@ -17,8 +17,8 @@ export default class FormButtons extends React.Component < any, any > {
             title: 'Подтверждение выхода',
             text: 'Вы внесли изменения в данные. Выйти без сохранения?',
             buttons: [
-                { name: 'Не сохранять', onClick: () => browserHistory.goBack() },
-                { name: 'Остаться'}
+                { icon: 'cancel', name: 'Не сохранять', onClick: () => browserHistory.goBack() },
+                { icon: 'default', name: 'Остаться' }
             ]
         });
     }
@@ -31,17 +31,19 @@ export default class FormButtons extends React.Component < any, any > {
             title: 'Подтверждение выхода',
             text: 'Сохранить изменения?',
             buttons: [
-                { name: 'Сохранить', onClick: () => this.props.save() },
-                { name: 'Остаться' }
+                { icon: 'default', name: 'Сохранить', onClick: () => this.props.save() },
+                { icon: 'refresh', name: 'Остаться' }
             ]
         });
     }
 
     public render() {
+        const disabled = this.props.isChanged ? {} : { disabled: true };
+        const cancelIcon = this.props.isChanged ? 'cancel' : 'refresh' ;
         return (
             <div className = {css.form_buttons}>
-                <Button className={css.buttons} onClick = {this.cancel}>Отменить</Button>
-                <Button className={css.buttons} onClick = {this.save}>Сохранить</Button >
+                <Button icon="default" {...disabled} className={css.buttons} onClick = {this.save}>Сохранить</Button >
+                <Button icon={cancelIcon} className={css.buttons} onClick = {this.cancel}>Отменить</Button>
                 <Dialog ref={e => this.confirm = e} />
             </div>
         );

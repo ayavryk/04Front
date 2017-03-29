@@ -37,23 +37,16 @@ export default class Rich extends React.Component<any, any> {
 
     };
 
-    public onBlur = data => {
-        console.log(data);
+    public onChange = data => {
         this.setState({text: data});
         this.props.onChange({ field: this.props.name, value: data });
 
-    };
-    public onFocus = () => {
-      // Document.body.dispatchEvent(window.event);
-        this.handleChange();
     };
 
     public loadDataToEditor() {
         this.editor = this.iframe.contentWindow;
         this.editor.onMaximize = this.toggleSize.bind(this);
-        this.editor.onFocus = this.onFocus.bind(this);
-        this.editor.onBlur = this.onBlur.bind(this);
-        this.editor.onBlur = this.onBlur.bind(this);
+        this.editor.onChange = this.onChange.bind(this);
         this.editor.load(this.state.text);
     };
 
@@ -72,15 +65,10 @@ export default class Rich extends React.Component<any, any> {
         }
     };
 
-    public handleChange = () => {
-        this.props.onChange({ field: this.props.name, value: this.state.text});
-    }
-
     public render() {
         const ref = e => { this.iframe = e; };
-
         return (
-          <div style={this.state.style} onClick={this.handleChange}>
+          <div style={this.state.style}>
             <iframe
               scrolling="no"
               ref={ref}

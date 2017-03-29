@@ -4,7 +4,6 @@
 	<meta charset="utf-8">
 	<title>CKEditor Sample?</title>
 	
-
 	<style>
 		body,
 		html {
@@ -21,8 +20,10 @@
 	</style>
 	<script src="tinymce.min.js"></script>
 	<script>
-		onFocus = null; // переопределяется сверху;
-		onBlur = null; // переопределяется сверху;
+
+		onChange = null; // переопределяется сверху;
+		onMaximize = null; // переопределяется сверху;
+
 		data = 'text';
 		load = function(data){
 
@@ -71,25 +72,29 @@
 			plugins: [
 				'img2 fullscreen imagetools advlist autolink lists link  visualblocks code fullscreen media code' 
 			],
-			toolbar: 'fullscreen code | bold italic removeformat styleselect | alignleft aligncenter alignright | bullist numlist outdent indent | link unlink | media img2 visualblocks imageoptions ',
+			toolbar: 'myfullscreen code | bold italic removeformat styleselect | alignleft aligncenter alignright | bullist numlist outdent indent | link unlink | media img2 visualblocks imageoptions ',
 			content_css: '//www.tinymce.com/css/codepen.min.css',
 			setup: function (editor) {
-				editor.on('focus', function (e) {
-					if (onFocus) {
-						onFocus();
+
+ 
+				editor.addButton('myfullscreen', {
+				icon: 'fullscreen',
+					onclick: function () {
+						console.log('MY!!!');
+						tinyMCE.activeEditor.execCommand('mceFullScreen');
+						if (onMaximize) {
+							onMaximize();
+						}
 					}
-					console.log('Editor got focus!');
 				});
-				editor.on('blur', function (e) {
-					console.log('Editor was blurred!');
-					if (onBlur) {
-						var data = tinyMCE.activeEditor.getContent();
-						onBlur(data);
-					}            
-				});
+ 
 				editor.on('init', function (e) {
 					if (data) {editor.setContent(data);}
 				});
+
+				editor.on('change',function() {
+                  if (onChange) {onChange(tinyMCE.activeEditor.getContent());}
+          		});
 			}
 		});
 		}

@@ -82,10 +82,10 @@ class Edit extends React.Component<IEditProps, void> {
 
 
 function mapStateToProps(state) {
-  return {
-      data: state.edit,
-      config: state.config,
-  };
+    return {
+        data: state.edit,
+        config: state.config,
+    };
 }
 
 function mapDispatchToProps(dispatch) {
