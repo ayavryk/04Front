@@ -3,6 +3,7 @@
             "configPath": "/config/{controller}/{method}.json",
             "server" : "http://c04.new/admin04/main", 
             "editorPath": "/tiny/index.html",
+            "homePage": "table/text",
             "menu": [
                 {
                     "head":"Основное"
