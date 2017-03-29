@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CKEditor Sample?</title>
+	
+
+	<style>
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+			overflow:hidden;
+		}
+		#cke_1_bottom {display:none;}
+		#cke_editor {height:100%}
+		#cke_1_toolbox {display:bloxk;height:28px;overflow:hidden;display:block;}
+	</style>
+	<script src="tinymce.min.js"></script>
+	<script>
+		onFocus = null; // переопределяется сверху;
+		onBlur = null; // переопределяется сверху;
+		data = 'text';
+		load = function(data){
+			tinymce.init({
+			selector: 'textarea',
+			height: 500,
+			menubar: false,
+			plugins: [
+				'img2',
+			
+				'advlist autolink lists link image charmap print preview anchor',
+				'searchreplace visualblocks code fullscreen',
+				'insertdatetime media table contextmenu paste code' 
+			],
+			
+
+			toolbar: 'img2 | code | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+			content_css: '//www.tinymce.com/css/codepen.min.css',
+			setup: function (editor) {
+				editor.on('focus', function (e) {
+					if (onFocus) {
+						onFocus();
+					}
+					console.log('Editor got focus!');
+				});
+				editor.on('blur', function (e) {
+					console.log('Editor was blurred!');
+					if (onBlur) {
+						var data = tinyMCE.activeEditor.getContent();
+						onBlur(data);
+					}            
+				});
+				editor.on('init', function (e) {
+					if (data) {editor.setContent(data);}
+				});
+			}
+		});
+		}
+
+
+	</script>
+</head>
+
+<body id="main">
+	<textarea id="content"></textarea>
+</body>
+
+</html>

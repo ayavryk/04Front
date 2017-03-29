@@ -1,5 +1,5 @@
 import * as React from 'react';
-const editorPath = '/ckeditor/index.html';
+const editorPath = '/tiny/index.html';
 
 export default class Rich extends React.Component<any, any> {
 
@@ -50,10 +50,11 @@ export default class Rich extends React.Component<any, any> {
 
     public loadDataToEditor() {
         this.editor = this.iframe.contentWindow;
-        this.editor.setData(this.state.text);
         this.editor.onMaximize = this.toggleSize.bind(this);
         this.editor.onFocus = this.onFocus.bind(this);
         this.editor.onBlur = this.onBlur.bind(this);
+        this.editor.onBlur = this.onBlur.bind(this);
+        this.editor.load(this.state.text);
     };
 
     public componentDidMount() {
