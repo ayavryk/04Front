@@ -47,7 +47,7 @@ class Edit extends React.Component<IEditProps, void> {
     }
 
     // проверка обязательных полей и фильтрация данных
-    public checkData(){
+    public checkData = () => {
         const config = this.props.config.config;
         const data = this.props.data.data;
         const result = {};
@@ -74,7 +74,7 @@ class Edit extends React.Component<IEditProps, void> {
         this.props.actions.save(
             appConfig.server,
             route,
-            this.props.data.data
+            this.checkData()
         );
     }
 
@@ -85,7 +85,7 @@ class Edit extends React.Component<IEditProps, void> {
         const buttons = (
             <CFormButtons
                 save = {this.save}
-                check = {this.checkData.bind(this)}
+                check = {this.checkData}
                 isChanged={this.props.data.isChanged}
             />
         );

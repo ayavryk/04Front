@@ -36,7 +36,7 @@ class CmdItem extends React.Component<any, any> {
   }
 
   public render() {
-    let disabled = this.props.disabled ? css['pager-item-disabled'] : '';
+    const disabled = this.props.disabled ? css['pager-item-disabled'] : '';
     return (<li onClick={this.handleClick.bind(this)} className={disabled}>
       <a href="#">
         <span aria-hidden="true">{this.props.text}</span>
@@ -53,35 +53,35 @@ export default class Pager extends React.Component<any, any> {
   }
 
   private _getFirstItem() {
-    let self = this;
-    let props = self.props;
-    let current = props.current;
-    let disabled = current === 0;
-    let label = props.previousLabel || '«';
+    const self = this;
+    const props = self.props;
+    const current = props.current;
+    const disabled = current === 0;
+    const label = props.previousLabel || '«';
 
     return <CmdItem disabled={disabled} text={label} skipTo={this.skipTo} page={current - 1}/>;
   }
 
 
   private _getLastItem() {
-    let self = this;
-    let total = self.props.total;
-    let current = self.props.current;
-    let disabled = current === total - 1;
-    let label = self.props.nextLabel || '»';
+    const self = this;
+    const total = self.props.total;
+    const current = self.props.current;
+    const disabled = current === total - 1;
+    const label = self.props.nextLabel || '»';
 
     return <CmdItem disabled={disabled} text={label} skipTo={this.skipTo} page={current + 1}/>;
   }
 
 
   private _getItems() {
-    let self = this;
-    let total = self.props.total;
-    let current = self.props.current;
-    let rst = [];
+    const self = this;
+    const total = self.props.total;
+    const current = self.props.current;
+    const rst = [];
     let from = 0;
     let active;
-    let skip = 2;
+    const skip = 2;
     let to = total - 1;
     let key = 0;
 
@@ -114,17 +114,17 @@ export default class Pager extends React.Component<any, any> {
   }
 
   public skipTo(page) {
-    let handler = this.props.onSkipTo;
+    const handler = this.props.onSkipTo;
     if (handler) {
       handler(page);
     }
   }
 
   public render() {
-    let self = this;
-    let first = self._getFirstItem();
-    let last = self._getLastItem();
-    let items = self._getItems();
+    const self = this;
+    const first = self._getFirstItem();
+    const last = self._getLastItem();
+    const items = self._getItems();
 
 
     return (

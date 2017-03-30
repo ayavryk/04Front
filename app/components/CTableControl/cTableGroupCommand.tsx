@@ -79,7 +79,7 @@ export default class CTableGroupCommand extends React.Component < any, any > {
     public render() {
         const cFormProps = {
             className: css.groupForm,
-            actions: {update: this.formAction.bind(this)},
+            actions: { update: this.formAction.bind(this) },
             config: this.state.form,
             data: this.state.data
         };

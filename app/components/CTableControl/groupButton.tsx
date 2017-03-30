@@ -13,11 +13,11 @@ export default class GroupButton extends React.Component < any, any > {
             this.props.groupClick(item);
         };
         click = click.bind(this);
-        const list = config.group.map((item,key) => {
+        const list = config.group.map((item, key) => {
             return (<div key = {key} onClick={() => click(item)}>
                 {item.name}
             </div>);
-        },this);
+        }, this);
         const className = css.selectedBtn + (disabled ? ' ' + css.disabled : '');
         return (
             <Button disabled={disabled} className={className} label="Операция с выделенными строками">

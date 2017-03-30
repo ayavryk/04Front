@@ -18,7 +18,7 @@ export default class AppWrapper extends React.Component < any, any > {
         }
     };
 
-    public choicePoint(additionPoint) {
+    public choicePoint = additionPoint => {
         this.setState({
             additionPoint,
             ext: false
@@ -31,7 +31,7 @@ export default class AppWrapper extends React.Component < any, any > {
         return (
             <div className={css.app + ' ' + extClassName}>
                 <div className={css.leftMenuColumn}>
-                    <Menu choicePoint = {this.choicePoint.bind(this)} />
+                    <Menu choicePoint = {this.choicePoint} />
                 </div>
                 <div onClick={this.extMenuHide} className={css.appColumn}>
                     <MainMenu
