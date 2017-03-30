@@ -70,3 +70,12 @@
     visibility:hidden;
     padding:5px;
 }
+
+.required {
+	border: 1px solid maroon;
+    background:#ffeead;
+}
+
+.required:focus {
+	border: 1px solid red;
+}

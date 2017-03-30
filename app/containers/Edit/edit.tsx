@@ -46,6 +46,28 @@ class Edit extends React.Component<IEditProps, void> {
         }
     }
 
+    // проверка обязательных полей и фильтрация данных
+    public checkData(){
+        const config = this.props.config.config;
+        const data = this.props.data.data;
+        const result = {};
+        let allRight = true;
+        config.forEach(line => {
+            line.forEach(cell => {
+                if (data[cell.field] !== undefined) {
+                    result[cell.field] = data[cell.field];
+                    if (cell.required && !data[cell.field]) {
+                        allRight = false;
+                    }
+                } else {
+                    console.log('not found data for field=' + cell.field);
+                }
+            });
+        });
+        return (allRight ? result : null);
+    }
+
+
     public save = () => {
         const route = getRoute();
         route.controller = 'save';
@@ -60,10 +82,13 @@ class Edit extends React.Component<IEditProps, void> {
         if (!this.props.data || !this.props.data.data) {
             return <Loading />;
         }
-        const buttons = (<CFormButtons
-                    save = {this.save}
-                    isChanged={this.props.data.isChanged}
-        />);
+        const buttons = (
+            <CFormButtons
+                save = {this.save}
+                check = {this.checkData.bind(this)}
+                isChanged={this.props.data.isChanged}
+            />
+        );
         return (
            <div className="editWrapper">
                 {buttons}
@@ -79,7 +104,6 @@ class Edit extends React.Component<IEditProps, void> {
         );
     };
 }
-
 
 function mapStateToProps(state) {
     return {

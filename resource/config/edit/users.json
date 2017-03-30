@@ -12,6 +12,7 @@
 		[
 			{
 				"field": "regmail",
+				"required":true,
 				"type": "input",
 				"placeholder": "regmail",
 				"label": "regmail",

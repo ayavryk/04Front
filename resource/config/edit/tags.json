@@ -5,6 +5,7 @@
 				"field": "name",
 				"type": "input",
 				"placeholder": "name",
+				"required":true,
 				"label": "name",
 				"flex": "1"
 			},

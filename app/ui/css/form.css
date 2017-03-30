@@ -62,3 +62,9 @@
 .line:last_child {
 	padding-right: 0;
 }
+
+.LabelRequired {
+	color:maroon;
+	font-style:normal;
+	padding-left:3px;
+}

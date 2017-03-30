@@ -23,9 +23,22 @@ export default class FormButtons extends React.Component < any, any > {
         });
     }
 
+
+    private requireWarning() {
+        this.confirm.open({
+            title: 'Ошибка заполнения данных',
+            text: 'Проверьте поля, обязательные к заполнению. Они выделены цветом',
+            buttons: [
+                { icon: 'default', name: 'OK' },
+            ]
+        });
+    }
+
+
     private save = () => {
-        if (!this.props.isChanged) {
-            browserHistory.goBack();
+        if (!this.props.check()) {
+            this.requireWarning();
+            return;
         }
         this.confirm.open({
             title: 'Подтверждение выхода',

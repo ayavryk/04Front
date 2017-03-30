@@ -40,9 +40,13 @@ export default class FormCell extends React.Component < any, any > {
             console.log('!!! NOT FOUND TYPE ' + type + 'FOR formCell');
             type = 'input';
         }
+        const title = this.props.required ? { title: 'Обязательное поле' } : {};
         return (
-                <div {...active} className={cssDiv}>
-                    <label className={cssLabel}>{this.props.label}</label>
+                <div {...title} {...active} className={cssDiv}>
+                    <label className={cssLabel}>
+                        {this.props.label}
+                        {this.props.required && <i className={css.LabelRequired}>*</i>}
+                    </label>
                     {React.createElement(controls[type], this.props)}
                 </div>
         );

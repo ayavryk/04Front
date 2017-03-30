@@ -26,6 +26,7 @@
                   "type":"autocomplete",
                   "field":"name",
                   "placeholder":"Автор",
+                  "required":true,
                   "title":"Автор",
                   "src":"{server}?method=author&controller=suggest&query=",
                   "width":"10em"

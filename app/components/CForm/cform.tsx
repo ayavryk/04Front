@@ -32,6 +32,7 @@ export default class CForm extends React.Component < any, any > {
                         {...data}
                         {...src}
                         {...config}
+                        required = {cell.required}
                         label = {cell.label || '?Empty Label?'}
                         value = {values[cell.field] || ''}
                         name={cell.field}
