@@ -30,8 +30,10 @@ export default class Rich extends React.Component<any, any> {
 
     public toggleSize = () => {
         this.fullSize = !this.fullSize;
-        if (this.fullSize) {
-            // Console.log('resize');
+        if (this.props.activate) {
+            this.props.activate(this.fullSize);
+        } else {
+            console.log('not found activate props for rich');
         }
         this.reSize();
 
