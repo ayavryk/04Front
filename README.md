@@ -1,5 +1,6 @@
-# 04Front. Админка
+# 04Front
 
-css: https://purecss.io/
-
-TypeScript + React/Redux
+03.05.17 
+удален js-core types
+tsconfig.json +
+	"lib": ["es2015", "dom"] 

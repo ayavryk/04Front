@@ -69,7 +69,6 @@
   },
   "devDependencies": {
     "@types/classnames": "0.0.32",
-    "@types/core-js": "0.9.35",
     "@types/enzyme": "2.7.1",
     "@types/jest": "18.1.0",
     "@types/node": "^7.0.5",
@@ -134,3 +133,4 @@
     "xmlbuilder": "8.2.2"
   }
 }
+
