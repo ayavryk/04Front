@@ -1,9 +1,9 @@
 import * as React from 'react';
 const css = require('./css/loading.css');
 
-const  Loading = () =>   {
+const Loading = () =>   {
     return (
-      <div className={css.loading} />
+      <div className={css.spinner}/>
     );
 };
 export default Loading;

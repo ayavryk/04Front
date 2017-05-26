@@ -10,7 +10,6 @@ function Loader(Component) {
 
         private isLoading = false;
         private hash = '';
-
         private loadConfig() {
             const route = getRoute();
             if (this.hash === route.hash) {
@@ -23,7 +22,6 @@ function Loader(Component) {
             this.props.actions.loadConfig(route);
             this.isLoading = true;
         }
-
         public componentWillReceiveProps() {
             this.loadConfig();
         }
@@ -31,7 +29,6 @@ function Loader(Component) {
         public componentWillMount() {
             this.loadConfig();
         }
-
         public render() {
             if  (!this.props.config.config || this.isLoading) {
                 return <Loading />;
