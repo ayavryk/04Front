@@ -1,0 +1,28 @@
+{
+  "bail": true,
+  "collectCoverageFrom": ["app/**/*.{ts,tsx,js}", "!**/node_modules/**", "!**/*.d.ts"],
+  "coverageDirectory": "<rootDir>/.coverage",
+  "coverageReporters": ["lcov"],
+  "globals": {
+    "__DEV__": true,
+    "__GA_UID__": null,
+    "__PLATFORM__": null,
+    "__BALANCER_ENDPOINT__": null,
+    "__RESOLUTION__": "'$npm_package_config_resolution'"
+  },
+  "moduleFileExtensions": ["ts", "tsx", "js", "css"],
+  "moduleNameMapper": {
+    "^assets(.*)$": "<rootDir>/jest/mocks/resourceMock.js",
+    "\\.(woff2|ttf|eot|svg|png|jpe?g|gif)$": "<rootDir>/jest/mocks/resourceMock.js",
+    "\\.(css)$": "identity-obj-proxy"
+  },
+  "modulePaths": ["<rootDir>/app"],
+  "resetModules": true,
+  "setupFiles": ["<rootDir>/jest/environment.js"],
+  "testRegex": "/(specs|app)/.*\\.spec\\.tsx?$",
+  "transform": {
+    "^.+\\.(tsx?|js)$": "<rootDir>/jest/typescriptPreprocessor.js"
+  },
+  "transformIgnorePatterns": ["/node_modules/(?!(zb-platforms-bundler|navigation)/.*)/"],
+  "verbose": true
+}

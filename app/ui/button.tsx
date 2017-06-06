@@ -40,8 +40,8 @@ export default class Button extends React.Component < any, any > {
                 <button className = {className} {...title} {...disabled} onClick = {this.onClick}>
                     {
                         this.props.icon
-                        && <i style={{ color:ico.color }} className={'fa ' + ico.type} />}{this.props.children
-                    }
+                        && <i style={{ color:ico.color }} className={'fa ' + ico.type} />}
+                        <span>{this.props.children}</span>
                 </button>
         );
     }

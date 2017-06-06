@@ -5,15 +5,17 @@ import Button from './button';
 const visible = {display: 'block'};
 const hidden = {display: 'none'};
 
-
+export function sum(a, b) {
+   return a + b;
+}
 
 export default class Modal extends React.Component < any, any > {
 
     constructor(props) {
-      super(props);
-      this.state = {
-        style: hidden
-      };
+        super(props);
+        this.state = {
+            style: hidden
+        };
     }
 
     public componentWillReceiveProps(newProps) {
