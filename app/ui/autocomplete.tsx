@@ -1,9 +1,20 @@
 import * as React from 'react';
-import {fGet} from '../lib/fetch';
+import { fGet } from 'lib/fetch';
+import { IOnChange } from './ui_interfaces';
 const css = require('./css/ui.css');
 
+interface IAutocompleteProps {
+    className?: string;
+    disabled?: boolean;
+    value?: any;
+    src?: any;
+    name: string;
+    onChange: IOnChange;
+    width?: string | number;
+    placeholder: string;
+}
 
-export default class Autocomplete extends React.Component < any, any > {
+export default class Autocomplete extends React.Component < IAutocompleteProps, any > {
 
     public sizer = null;
     public input = null;
@@ -37,10 +48,8 @@ export default class Autocomplete extends React.Component < any, any > {
         let max = '';
         this.data.map(item => {if (item.length > max.length) {max = item; }});
         this.setState({resultLargeStiring: max});
-
         this.setState({results});
         this.changeValue(value);
-
         this.results.style.width = getComputedStyle(this.input, null).getPropertyValue('width');
         this.setState({visible: results.length});
     }
@@ -53,7 +62,7 @@ export default class Autocomplete extends React.Component < any, any > {
     }
 
 
-    private onChange = (e) => {
+    private onChange = e => {
         const value = e.target.value;
         this.setState({visible: false});
         this.changeValue(value);
@@ -69,7 +78,7 @@ export default class Autocomplete extends React.Component < any, any > {
         this.changeValue(this.state.results[item]);
     }
 
-    public onKeyUp = (e) => {
+    public onKeyUp = e => {
 
         const keyCode = e.keyCode || e.which;
         let current = this.state.current;
@@ -161,4 +170,3 @@ export default class Autocomplete extends React.Component < any, any > {
     }
 
 };
-

@@ -138,8 +138,7 @@ export default class ConfigBuilderTable extends React.Component<any, any> {
     }
 
     public render() {
-        
-        const form = this.generateForm()
+        const form = this.generateForm();
         return (
             <div>
                 <div className={css.h1}>Table {this.props.head} </div>

@@ -1,10 +1,9 @@
 import * as React from 'react';
 const css = require('./ctable.css');
-import {Link} from 'react-router';
-import {Check} from 'ui';
+import { Link } from 'react-router';
+import { Check } from 'ui';
 
 export default class CTable extends React.Component < any, any > {
-
 
     public group = true;
     public singleCommand;
@@ -51,7 +50,7 @@ export default class CTable extends React.Component < any, any > {
             return (<th key={index} style={style}>{head}</th>);
         };
         const body = this.getIems().map(render, this);
-        const check = <Check value={this.state.checkedAll} name="checkAll" onChange = {e => this.checkAll(e)}/>;
+        const check = <Check value={this.state.checkedAll} name="checkAll" onClick = {e => this.checkAll(e)}/>;
         const className = (this.props.data[0] && typeof(this.props.data[0].public) !== 'undefined') ?
                 css.publicHead : '';
         return (<tr className={className}>

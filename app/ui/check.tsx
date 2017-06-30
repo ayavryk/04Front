@@ -1,7 +1,17 @@
 import * as React from 'react';
 const css = require('./css/check.css');
 
-export default class Input extends React.Component < any, any > {
+// TODO переделать для удаления дублирования onClick onChange;
+interface ICheckBoxProps {
+    onClick?: any;
+    onChange?: any;
+    className?: string;
+    value?: any;
+    name?: string;
+    label?: string;
+}
+
+export default class CheckBox extends React.Component < ICheckBoxProps, any > {
 
     private getCheckboxStatus() {
         const res = this.props.value && (
@@ -12,7 +22,17 @@ export default class Input extends React.Component < any, any > {
         return res;
     }
 
-    private onClick = () => {
+    private onClick = e => {
+
+        if (this.props.onClick) {
+            if (e) {
+                this.props.onClick(e);
+            }
+            if (this.props.onChange) {
+                console.log('!!! Checkbox field have onClick & onChange. It.s wrong!');
+                return;
+            }
+        }
 
         if (this.props.name) {
             const value = this.getCheckboxStatus() ? 0 : 1;
@@ -31,6 +51,7 @@ export default class Input extends React.Component < any, any > {
                         checked = {this.getCheckboxStatus()}
                         type="checkbox"
                         onChange={this.onClick}
+                        onClick = {e => this.onClick(e)}
                 />
             </span>
             {this.props.label && <span className = {css.text}>{this.props.label}</span>}
