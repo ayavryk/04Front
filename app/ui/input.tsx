@@ -1,7 +1,18 @@
 import * as React from 'react';
 const css = require('./css/ui.css');
 
-export default class Input extends React.Component < any, any > {
+interface IInputProps {
+    onChange: any;
+    name: string;
+    width?: string | number;
+    placeholder: string;
+    required?: any;
+    value?: string;
+    title?: string;
+    label?: string;
+}
+
+export default class Input extends React.Component < IInputProps, any > {
 
     private onChange(event) {
         if (this.props.name) {

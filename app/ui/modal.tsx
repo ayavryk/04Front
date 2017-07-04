@@ -5,11 +5,25 @@ import Button from './button';
 const visible = {display: 'block'};
 const hidden = {display: 'none'};
 
-export function sum(a, b) {
-   return a + b;
+export interface IModalDialogButton {
+    name: string;
+    type: string;
+    icon?: string;
 }
 
-export default class Modal extends React.Component < any, any > {
+interface IModalProps {
+    onClose: any;
+    buttons: IModalDialogButton[];
+    type?: string;
+    className?: string;
+    title?: string;
+}
+
+interface IModalState {
+    style?: any;
+}
+
+export class Modal extends React.Component < IModalProps, IModalState > {
 
     constructor(props) {
         super(props);

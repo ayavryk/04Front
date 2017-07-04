@@ -1,8 +1,18 @@
 import * as React from 'react';
-import { Modal } from './';
+import { Modal, IModalDialogButton } from './modal';
 import { clone } from 'lib';
 
-class Dialog extends React.Component<any, any> {
+interface IDialogState {
+    buttons?: IModalDialogButton[];
+    text?: any;
+    className?: string;
+    value?: any;
+    title?: string;
+    type?: string;
+    visible: boolean;
+}
+
+class Dialog extends React.Component<any, IDialogState> {
 
     public state = {
         visible: false,
@@ -39,7 +49,5 @@ class Dialog extends React.Component<any, any> {
         );
     }
 };
-
-
 
 export default Dialog;

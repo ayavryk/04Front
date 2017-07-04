@@ -57,7 +57,6 @@ export default class ConfigBuilderTable extends React.Component<any, any> {
     public generateForm(){
         this.parseFields();
         const data = this.state.fields;
-        
         let arr = data.map( item => {
             if (!item.field) {
                 return null;
@@ -86,7 +85,7 @@ export default class ConfigBuilderTable extends React.Component<any, any> {
         arr = arr.filter(item => item);
         if (this.state.ext.icon) {
             arr = arr.concat(configIconsTable);
-        }        
+        }
         const result: any = { config: arr };
         if (this.state.ext.group) {
             result.group = configGroupTable;
