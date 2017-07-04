@@ -5,6 +5,15 @@ import { shiftDown, ctrlDown } from '../lib/key';
 
 const css = require('./css/mult.css');
 
+interface IMultProps {
+    count?: any;
+    onChange?: any;
+    name?: string;
+    config?: any; // TODO добавить интерфейс
+    value?: any[];
+    className?: string;
+}
+
 const controls = {
     input: Input,
     select: Select,
@@ -13,8 +22,7 @@ const controls = {
     autocomplete: AutoComplete
 };
 
-
-export default class Mult extends React.Component < any, any > {
+export default class Mult extends React.Component < IMultProps, any > {
 
     private count = 1;
     private width = '100%';
@@ -22,7 +30,7 @@ export default class Mult extends React.Component < any, any > {
 
     constructor(props) {
         super(props);
-        this.count = Math.max(1, parseInt(this.props.count || 1, 10));
+        this.count = Math.max(1, parseInt(this.props.count || '1', 10));
         this.width = (100 / this.count) + '%';
     }
 

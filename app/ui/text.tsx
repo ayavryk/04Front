@@ -1,7 +1,14 @@
 import * as React from 'react';
 const css = require('./css/ui.css');
 
-export default class Text extends React.Component < any, any > {
+interface ITextProps {
+    className?: string;
+    onChange?: any;
+    name?: string;
+    value?: string;
+}
+
+export default class Text extends React.Component < ITextProps, any > {
 
     private onChange(event) {
         if (this.props.name) {
@@ -10,6 +17,7 @@ export default class Text extends React.Component < any, any > {
             console.log('not found field name');
         }
     }
+
     public render() {
         return (
             <textarea
@@ -19,4 +27,5 @@ export default class Text extends React.Component < any, any > {
             />
         );
     }
+
 }
