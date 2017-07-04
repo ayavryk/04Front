@@ -6,7 +6,7 @@ interface ISelectProps {
     src?: any;
     onChange?: any;
     name?: string;
-    value?: string | number;
+    value?: string;
 }
 
 export default class Select extends React.Component < ISelectProps, any > {

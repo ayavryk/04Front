@@ -1,7 +1,19 @@
 import * as React from 'react';
 import { config as appConfig } from 'lib/appConfig';
 
-export default class Rich extends React.Component<any, any> {
+interface IRichProps {
+    activate?: any;
+    height?: any;
+    onChange?: any;
+    name?: string; // TODO добавить интерфейс
+    value?: string;
+}
+interface IRichState {
+    style?: any; // TODO добавить интерфейс
+    text?: string;
+}
+
+export default class Rich extends React.Component<IRichProps, IRichState> {
 
     public iframe = null;
     public editor = null;
