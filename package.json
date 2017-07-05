@@ -9,6 +9,8 @@
   },
   "scripts": {
     "start": "better-npm-run start",
+    "storybook": "start-storybook -p 1962 -c .storybook",
+    "storybuild": "build-storybook -c .storybook -o tmp",
     "prebuild": "rm -rf dist/$npm_package_version/$npm_package_config_platform",
     "build": "better-npm-run build",
     "lint": "npm run tslint && npm run eslint && npm run stylelint",
@@ -49,6 +51,7 @@
   },
   "author": "V4Front",
   "dependencies": {
+    "@storybook/react": "^3.1.7",
     "classnames": "2.2.5",
     "core-js": "2.4.1",
     "date-fns": "1.27.2",
